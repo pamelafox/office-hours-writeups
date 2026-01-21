@@ -17,7 +17,9 @@ This repo turns recordings of weekly Discord office hours into structured Q&A wr
 4. Ask GitHub Copilot to post each Q&A as a comment to the GitHub Discussion thread using the `discussion-commenter` skill:
 
     ```text
-    Post each Q&A from the write-up as a comment to the GitHub Discussion thread.
+    Post each Q&A from the write-up as a comment to the GitHub Discussion thread,
+    and create a markdown list of the comment URLs in `comment_url.md`.
+    Comment URLs should be relative, not absolute.
     ```
 
     That will use the GitHub CLI, authenticated as you, to post each question and answer as a separate comment in the discussion thread.
@@ -29,6 +31,14 @@ This repo turns recordings of weekly Discord office hours into structured Q&A wr
     ```
 
     That will generate `youtube_description.md` with timestamps and links, and you can copy-paste that into the YouTube video description.
+
+6. Ask GitHub Copilot to generate a LinkedIn post:
+
+    ```text
+    Write a LinkedIn post summarizing this week's topics.
+    ```
+
+    LinkedIn doesn't support markdown, so the post will use Unicode bold characters for emphasis. Copy-paste the output directly into LinkedIn.
 
 You should end up with a structure like this:
 

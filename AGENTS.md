@@ -80,3 +80,34 @@ Timestamps:
 ```
 
 Note: YouTube automatically makes timestamps clickable when they appear at the start of a line. Do not include the `📹` emoji or markdown links in the YouTube description.
+
+## Generating a LinkedIn post
+
+When asked to generate a LinkedIn post, create a summary with:
+
+1. An intro line with emoji
+2. A "Topics we covered" section with emoji bullets and Unicode bold headers (LinkedIn doesn't support markdown bold)
+3. A news section if there were announcements
+4. A link to the discussion thread (not the YouTube recording directly)
+5. Relevant hashtags
+
+Use Unicode bold characters (𝗮𝗯𝗰𝗱𝗲𝗳𝗴...) instead of markdown **bold** since LinkedIn doesn't render markdown.
+
+For example:
+
+```text
+🐍 This week's Python + AI Office Hours was packed with great questions!
+
+𝗧𝗼𝗽𝗶𝗰𝘀 𝘄𝗲 𝗰𝗼𝘃𝗲𝗿𝗲𝗱:
+
+🎧 𝗣𝗼𝗱𝗰𝗮𝘀𝘁 𝗿𝗲𝗰𝗼𝗺𝗺𝗲𝗻𝗱𝗮𝘁𝗶𝗼𝗻𝘀 for learning AI - description here
+
+📚 𝗧𝗵𝗲 𝘁𝘂𝘁𝗼𝗿𝗶𝗮𝗹 𝘁𝗿𝗮𝗽 - How to move from watching to building
+
+Join us live every week: http://aka.ms/aipython/oh
+
+See the recording and questions here:
+https://github.com/orgs/microsoft-foundry/discussions/280
+
+#Python #AI #GenerativeAI
+```
