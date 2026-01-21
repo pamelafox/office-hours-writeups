@@ -18,7 +18,7 @@ This repo turns recordings of weekly Discord office hours into structured Q&A wr
 
     ```text
     Post each Q&A from the write-up as a comment to the GitHub Discussion thread,
-    and create a markdown list of the comment URLs in `comment_url.md`.
+    and create a markdown list of the comment URLs in `comments.md`.
     Comment URLs should be relative, not absolute.
     ```
 
