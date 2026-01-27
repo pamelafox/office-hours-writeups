@@ -6,7 +6,8 @@ The goal of this repo is to turn the recordings of weekly Discord office hours i
 
 When generating the write-up, follow these steps:
 
-* Use the youtube-transcript skill to fetch the transcript of the YouTube video for that week's office hours. Make sure to include timestamps.
+* Use the youtube-transcript skill to fetch the transcript of the YouTube video for that week's office hours. Make sure to include timestamps. Store in transcript.md.
+* Use the youtube-live-chat skill to fetch the live chat from the YouTube video. This can provide additional context like links shared in chat. Store in live_chat.md.
 * Identify the main questions and answers
 * Generate a markdown file at "office-hours/YYYY_MM_DD/questions_answers.md" with each question as a header (##) and the corresponding answer below it. If there are follow-up questions, use sub-headers (###) for those. Do not include the "upcoming events" as a section in the write-up.
 * Include a timestamp link below each heading, linking to that point in the YouTube video.

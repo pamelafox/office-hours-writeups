@@ -19,7 +19,7 @@ from youtube_transcript_api import YouTubeTranscriptApi
 def extract_video_id(url_or_id: str) -> str:
     """Extract video ID from various YouTube URL formats or return as-is if already an ID."""
     patterns = [
-        r'(?:youtube\.com/watch\?v=|youtu\.be/|youtube\.com/embed/|youtube\.com/v/)([a-zA-Z0-9_-]{11})',
+        r'(?:youtube\.com/watch\?v=|youtu\.be/|youtube\.com/embed/|youtube\.com/v/|youtube\.com/live/)([a-zA-Z0-9_-]{11})',
         r'^([a-zA-Z0-9_-]{11})$'
     ]
     for pattern in patterns:
