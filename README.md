@@ -48,6 +48,9 @@ office-hours/
     raw.md                 # Raw resources: YouTube links, chat logs, slides
     questions_answers.md   # Q&A write-up with timestamps
     youtube_description.md # Description for YouTube video
+    comments.md            # Relative URLs of GitHub Discussion comments
+    transcript.md          # Full transcript of the office hours
+    linkedin_post.md       # LinkedIn post summary
 ```
 
 ## Resources

@@ -1,6 +1,7 @@
-Exploring the GitHub Copilot CLI and GitHub Copilot SDK for Python - finding bugs and learning features along the way!
+We explored the GitHub Copilot CLI and GitHub Copilot SDK for Python, testing various features and discovering a few issues along the way.
 
 Links:
+
 - GitHub Copilot CLI: https://github.com/github/copilot-cli
 - GitHub Copilot SDK: https://github.com/github/copilot-sdk
 - CLI docs: https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli
