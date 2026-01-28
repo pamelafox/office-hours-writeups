@@ -87,23 +87,23 @@ Note: YouTube automatically makes timestamps clickable when they appear at the s
 When asked to generate a LinkedIn post, create a summary with:
 
 1. An intro line with emoji
-2. A "Topics we covered" section with emoji bullets and Unicode bold headers (LinkedIn doesn't support markdown bold)
+2. A "Topics we covered" section with emoji bullets and topic headers followed by colons
 3. A news section if there were announcements
 4. A link to the discussion thread (not the YouTube recording directly)
 5. Relevant hashtags
 
-Use Unicode bold characters (𝗮𝗯𝗰𝗱𝗲𝗳𝗴...) instead of markdown **bold** since LinkedIn doesn't render markdown.
+Do NOT use Unicode bold characters (𝗮𝗯𝗰𝗱𝗲𝗳𝗴...) as they are inaccessible. Use plain text with spacing and colons instead.
 
 For example:
 
 ```text
 🐍 This week's Python + AI Office Hours was packed with great questions!
 
-𝗧𝗼𝗽𝗶𝗰𝘀 𝘄𝗲 𝗰𝗼𝘃𝗲𝗿𝗲𝗱:
+Topics we covered:
 
-🎧 𝗣𝗼𝗱𝗰𝗮𝘀𝘁 𝗿𝗲𝗰𝗼𝗺𝗺𝗲𝗻𝗱𝗮𝘁𝗶𝗼𝗻𝘀 for learning AI - description here
+🎧 Podcast recommendations: description here
 
-📚 𝗧𝗵𝗲 𝘁𝘂𝘁𝗼𝗿𝗶𝗮𝗹 𝘁𝗿𝗮𝗽 - How to move from watching to building
+📚 The tutorial trap: How to move from watching to building
 
 Join us live every week: http://aka.ms/aipython/oh
 
