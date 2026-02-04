@@ -1,4 +1,3 @@
-```skill
 ---
 name: youtube-live-chat
 description: Download live chat transcripts from YouTube videos. Use when the user asks for live chat, chat messages, or chat replay from a YouTube video and provides a YouTube URL (youtube.com/watch?v=, youtu.be/, or similar). Works with live streams and past streams that have chat replay enabled.
@@ -52,4 +51,3 @@ uv run get_live_chat.py "VIDEO_URL_OR_ID" --output chat.txt
 - Works with past streams that have chat replay enabled
 - Some videos may not have live chat available
 - Super chats and memberships are included with their message text
-```
