@@ -1,6 +1,8 @@
 # Discord Office Hours write-ups
 
-This repo turns recordings of weekly Discord office hours into structured Q&A write-ups, using VS Code GitHub Copilot and [custom skills](https://code.visualstudio.com/docs/copilot/customization/agent-skills). The user-facing instructions are below, and he agent-facing instructions are in [AGENTS.md](AGENTS.md).
+This repo turns recordings of weekly Discord office hours into structured Q&A write-ups, using VS Code GitHub Copilot and [custom skills](https://code.visualstudio.com/docs/copilot/customization/agent-skills). The user-facing instructions are below, and the agent-facing instructions are in [AGENTS.md](AGENTS.md).
+
+[📺 See a video recording of this repo in action](https://youtube.com/live/l_sdnLWNwUc)
 
 ## User workflow
 
