@@ -54,6 +54,7 @@
 [02:19] logged in with your cookies and uh, you
 [02:22] know, it's like giving a very smart
 [02:26] toddler access to your machine
+[02:28] [laughter]
 [02:29] and everything always goes crazy if I
 [02:31] give my toddler any access to any of my
 [02:33] devices. Uh, so uh, yeah. So, we've got
@@ -166,6 +167,7 @@
 [07:17] agents with memory.
 [07:19] Uh, and I think they're doing it a bit
 [07:21] more responsibly than the open claw.
+[07:24] [laughter]
 [07:25] Uh, and I like that this one is like,
 [07:26] yeah, they're trying to learn. How can
 [07:28] agents learn, right? And what does that
@@ -219,7 +221,7 @@
 [09:44] going back to codeex continued. It's
 [09:47] included in my plan for free through
 [09:48] March 2nd. All right, add project. Okay,
-[09:53] let's see what project
+[09:53] let's see what project [laughter]
 [09:57] I want to run it on.
 [10:01] Uh
 [10:07] We'll just do let's see if we can figure
@@ -276,14 +278,15 @@
 [12:18] high, codeex extra high. Lots of people
 [12:20] swear by extra high, right? Um, so maybe
 [12:23] we should just move to extra high.
-[12:25] Although I don't know if I might end up
-[12:28] having to pay for chat GBT at this
-[12:30] point. I still really like chat GBT, so
-[12:32] I I've been tempted to pay for it again.
-[12:34] Okay, so I'm on main. All right. All
-[12:37] right. Um, I'm just going to paste in
-[12:40] this entire prompt.
+[12:25] Although I don't know if [laughter]
+[12:27] I might end up having to pay for chat
+[12:29] GBT at this point. I still really like
+[12:31] chat GBT, so I I've been tempted to pay
+[12:34] for it again. Okay, so I'm on main. All
+[12:36] right. All right. Um, I'm just going to
+[12:39] paste in this entire prompt.
 [12:44] Go.
+[12:45] [laughter]
 [12:47] Here we go. Paste it in the entire
 [12:49] prompt. And let's see what it does. Now,
 [12:54] it's a nice UI. Um, I didn't realize
@@ -309,7 +312,7 @@
 [13:40] Um oh, Justin said this is brand new as
 [13:42] of yesterday. Wait, what is brand new?
 [13:44] Is it this whole app is brand new?
-[13:49] Oh, really? Okay.
+[13:49] Oh, really? Okay. [laughter]
 [13:52] You can see how much I've used Codeex.
 [13:53] The Codex app is new. Okay. Well, news.
 [13:55] Codex app. That's another Okay. Another
@@ -338,7 +341,7 @@
 [14:56] it a a kind of a long task to do and
 [15:00] we're using extra high reasoning.
 [15:02] Probably should have started off with no
-[15:04] reasoning.
+[15:04] reasoning. [laughter]
 [15:07] All right, cool. Let's see. So, while
 [15:09] that's going, related to that is skills,
 [15:11] right? Everybody's talking about skills
@@ -365,11 +368,11 @@
 [15:56] website version of Awesome Copilot. Um,
 [16:01] so actually we should be able to find
 [16:03] the website version of it because it
-[16:05] would just be uh let's see it would be
-[16:09] it'd be the GitHub pages URL. So let's
-[16:11] see if we have Here we go. I think it'd
-[16:15] be this. Uh, yeah. So, here we go.
-[16:18] Skills,
+[16:05] would just [clears throat] be uh let's
+[16:07] see it would be it'd be the GitHub pages
+[16:10] URL. So let's see if we have Here we go.
+[16:14] I think it'd be this. Uh, yeah. So, here
+[16:18] we go. Skills,
 [16:20] right? So, this would be another and
 [16:22] this is a this is obviously a much
 [16:24] shorter list of skills, but these um
@@ -436,22 +439,23 @@
 [19:03] put back around everything. Okay. And
 [19:06] then YouTube transcript. All right. That
 [19:07] one looks good. So extract transcripts
-[19:09] from used videos. Okay. All right. So
-[19:12] then like let's say um there's the thing
-[19:15] is like you can then like mix and match
-[19:17] these skills certain ways. So I have a
-[19:18] particular workflow I use when I'm
-[19:20] turning these office hours into um
-[19:23] writeouts where I say this and then and
-[19:26] then in my agents.mmd I have all these
-[19:28] tips about like what skills to use like
-[19:30] when generating the write up. Follow
-[19:31] these skills. Use the YouTube transfer
-[19:32] skill. use a type live chat skill. So,
-[19:35] I'm like being pretty explicit here. Um,
-[19:37] but now that these skills exist, I could
-[19:39] use them for anything, right? So, I
-[19:40] could go to my Let me go to my YouTube
+[19:09] from used videos. Okay. [laughter]
+[19:11] All right. So then like let's say um
+[19:14] there's the thing is like you can then
+[19:16] like mix and match these skills certain
+[19:18] ways. So I have a particular workflow I
+[19:19] use when I'm turning these office hours
+[19:22] into um writeouts where I say this and
+[19:25] then and then in my agents.mmd I have
+[19:27] all these tips about like what skills to
+[19:29] use like when generating the write up.
+[19:31] Follow these skills. Use the YouTube
+[19:32] transfer skill. use a type live chat
+[19:34] skill. So, I'm like being pretty
+[19:35] explicit here. Um, but now that these
+[19:38] skills exist, I could use them for
+[19:40] anything, right? So, I could go to my
+[19:42] Let me go to my YouTube
 [19:45] and then like just grab one of my um
 [19:49] videos. Okay, so like this one. Let's
 [19:51] std spec kit. I don't think I ever did a
@@ -500,6 +504,7 @@
 [21:49] how it determines what skills
 [21:52] Okay, these are the tools
 [21:55] available deferred tools.
+[21:59] [laughter]
 [22:03] Those are all the tools.
 [22:08] How does it do skills
 [22:13] YouTube transcript
@@ -526,8 +531,9 @@
 [23:12] skill.md. Right? So when you're, you
 [23:15] know, when you're doing your
 [23:16] engineering, your skill engineering, you
-[23:18] do want to make sure the name and
-[23:20] description is very clear.
+[23:18] do want to make sure the name
+[23:19] [clears throat] and description is very
+[23:22] clear.
 [23:24] Uh so it's working on stuff. Oh,
 [23:30] got a partial transcript. Interesting.
 [23:34] All right. So, it's going and it's
@@ -609,7 +615,7 @@
 [26:42] the write up, like what is being sent
 [26:45] here, right? And you know, it's um
 [26:49] there's a lot in here. Uh you can see
-[26:51] here the whole transcript,
+[26:51] here the whole transcript, [laughter]
 [26:53] right? So I think if you're curious
 [26:55] what's going on, this is you know, I
 [26:57] always use chat debug view in order to
@@ -625,9 +631,9 @@
 [27:25] know we Let's see. Last week the
 [27:27] insiders
 [27:29] was What were the things we added last?
-[27:33] Um, I think that we've had it in stable
-[27:36] for a bit. So, let's see. Using agent
-[27:38] skills in VS Code.
+[27:33] [clears throat] Um, I think that we've
+[27:35] had it in stable for a bit. So, let's
+[27:37] see. Using agent skills in VS Code.
 [27:41] Uh, let's see.
 [27:44] It's in preview. I see. Okay. So, you do
 [27:48] not have to use insiders, but it looks
@@ -637,7 +643,7 @@
 [28:01] Yeah. Well, since it's a new thing and
 [28:02] it's kind of like opening you up to to
 [28:05] new capabilities. So, maybe that's why.
-[28:08] Um,
+[28:08] Um, [clears throat]
 [28:10] so yeah. So you can try it instable
 [28:14] just um if it's not working uh do chat
 [28:18] aent skills and this is cool you can
@@ -746,6 +752,7 @@
 [32:16] um did it manage to
 [32:19] All right. Uh, so
 [32:24] the question is, does it work?
+[32:26] [laughter]
 [32:28] Let's see. Let me just ask. Did they run
 [32:30] the P test warning observe? Okay, so it
 [32:32] says I I do have a harder time kind of
@@ -778,7 +785,7 @@
 [34:01] I'm guessing it's going to use oh it
 [34:04] says per the guard rails I can't run
 [34:06] GitHub get commit push opening par.
-[34:09] Okay. Um what guard rails?
+[34:09] Okay. Um what guard rails? [laughter]
 [34:13] Let's see.
 [34:16] Maybe I would need to enable. Is there
 [34:19] Can I enable the MCP server? In your
@@ -840,18 +847,19 @@
 [36:59] is still
 [37:02] Why is it making a directory? My gosh,
 [37:05] why is it so
-[37:09] I kind of want to like stop it and put
-[37:10] it out as misery. Okay. Oh, cool. Okay,
-[37:13] we get a question popup. All right, this
-[37:14] is actually something that we also got
-[37:16] added to VS Code recently in GitHub
-[37:18] Copilot is that now it can pop up a
-[37:20] multiple choice question, especially if
-[37:22] you're doing planning mode. So if you
-[37:24] ever do planning mode in GitHub copilot,
-[37:26] if it has like open questions, it'll can
-[37:28] pop open a multiplechoice question now
-[37:30] and ask you what you want to do. So So
+[37:08] [gasps and laughter] I kind of want to
+[37:10] like stop it and put it out as misery.
+[37:11] Okay. Oh, cool. Okay, we get a question
+[37:13] popup. All right, this is actually
+[37:15] something that we also got added to VS
+[37:17] Code recently in GitHub Copilot is that
+[37:19] now it can pop up a multiple choice
+[37:21] question, especially if you're doing
+[37:22] planning mode. So if you ever do
+[37:24] planning mode in GitHub copilot, if it
+[37:26] has like open questions, it'll can pop
+[37:28] open a multiplechoice question now and
+[37:30] ask you what you want to do. So So
 [37:33] that's kind of fun for VS Code insiders.
 [37:35] All right. Do you want me allowed to
 [37:36] state the changes? Yes. Yes.
@@ -1093,25 +1101,25 @@
 [47:05] can do cloud
 [47:08] I see we have a suggestion create an
 [47:09] agent to control the multiple agents and
-[47:12] give that the cognitive load. Yeah, if
-[47:14] you trust your agent to you know to uh
-[47:17] reconcile the different agents, sure go
-[47:19] for it. Yeah, it all depends on um you
-[47:22] know what the the level of risk in in
-[47:24] the code is that you're working on right
-[47:26] and uh you know is it if you're just
-[47:28] doing prototype hobby thing you know
-[47:30] then you can go wild but you know of
-[47:33] course if you're working on some legacy
-[47:35] codebase with your colleagues uh you
-[47:38] know with you know for your organization
-[47:40] then that's where you usually want to
-[47:41] have like a nice clean pull request
-[47:43] right to me it's always about do you
-[47:45] want a clean pull request um or you know
-[47:49] is Is it fine just to stuff it all in?
-[47:52] All right. So, let's see. So, what else?
-[47:54] Uh, let's um
+[47:12] [clears throat] give that the cognitive
+[47:13] load. Yeah, if you trust your agent to
+[47:15] you know to uh reconcile the different
+[47:18] agents, sure go for it. Yeah, it all
+[47:20] depends on um you know what the the
+[47:23] level of risk in in the code is that
+[47:25] you're working on right and uh you know
+[47:28] is it if you're just doing prototype
+[47:29] hobby thing you know then you can go
+[47:32] wild but you know of course if you're
+[47:33] working on some legacy codebase with
+[47:36] your colleagues uh you know with you
+[47:38] know for your organization then that's
+[47:40] where you usually want to have like a
+[47:42] nice clean pull request right to me it's
+[47:44] always about do you want a clean pull
+[47:45] request um or you know is Is it fine
+[47:50] just to stuff it all in? All right. So,
+[47:53] let's see. So, what else? Uh, let's um
 [47:58] uh there's a new Postgress learning
 [47:59] path. Just wanted to shout that out
 [48:01] because the Postgress team um shared
@@ -1320,6 +1328,7 @@
 [56:29] accepts network requests. I should re
 [56:31] run it. I haven't run it recently, so
 [56:33] you can see I have 364 requests.
+[56:35] [laughter]
 [56:36] Um,
 [56:38] uh, so I needed the cookies, but if
 [56:40] you're doing a job search, I don't know

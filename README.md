@@ -55,5 +55,5 @@ office-hours/
 
 ## Resources
 
-- [Weekly office hours recordings & Q&A](https://github.com/orgs/microsoft-foundry/discussions/280)
-- [Weekly live office hours](http://aka.ms/aipython/oh)
+- [Weekly office hours recordings & Q&A](https://aka.ms/pythonai/oh/links)
+- [Weekly live office hours](https://aka.ms/pythonai/oh)

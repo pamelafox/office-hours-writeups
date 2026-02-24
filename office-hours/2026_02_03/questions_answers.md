@@ -1,161 +1,162 @@
 # February 3, 2026 Office Hours Q&A
 
-## What security concerns exist around OpenClaw and Moltbook?
+## What is OpenClaw and is it safe to install?
 
 📹 [1:16](https://youtube.com/watch?v=V-mUPDW6Tgg&t=76)
 
-OpenClaw (formerly Clawd/Cladbot) has been all over the news, but has significant security concerns. It runs on your machine with full system access - it can connect to all your communication mechanisms, control your browser, and has browser cookie access. It's described as giving "a very smart toddler access to your machine."
+OpenClaw (formerly known as Clawd/Cladbot) is a very powerful autonomous agent that has been all over the news. It runs on your machine, can connect to all your communication mechanisms, control your browser, and has full system access. Pamela has **not** installed it and recommends against it for security reasons — it's like giving a very smart toddler access to your machine.
 
-Recommendations:
-- Don't install it on your work computer
-- Don't install it on your personal computer given browser access
-- If you want to experiment, run it in isolated sandbox containers
+If you must try it, run it in isolated sandbox containers rather than on your work or personal computer, since it has browser access and your browser is logged in with your cookies.
 
-Moltbook, the social network where OpenClaw agents can chat with each other, has been particularly exploited. A Wiz.io article revealed the Moltbook database exposed millions of API keys due to a misconfigured Supabase backend.
+**Moltbook**, a related social network where OpenClaw agents can chat with each other, was not created by the same developer but has been heavily exploited. A Wiz.io analysis revealed that Moltbook's database exposed millions of API keys due to a misconfigured Supabase backend.
 
-For those interested in autonomous bots with more responsible development, check out [Letta](https://www.letta.com/) which creates agents with memory, many running on Bluesky.
+The creator of OpenClaw claims to run 5-10 agents simultaneously and says "code reviews are dead" for this workflow, replaced by architecture discussions. While interesting, this approach may only be appropriate for personal repos, not open source or shared codebases.
+
+If you're interested in autonomous bots on social media, check out **Letta** instead — they build agents with long-term memory and operate more responsibly. Cameron, a developer advocate at Letta, runs several bots on Bluesky (Comind, Void, Grunk) that experiment with agent memory and learning.
 
 Links shared:
-- [OpenClaw](https://openclaw.im/) (don't install!)
-- [Wiz.io: Exposed Moltbook Database](https://www.wiz.io/blog/exposed-moltbook-database-reveals-millions-of-api-keys)
-- [Pragmatic Engineer: The Creator of Clawd](https://newsletter.pragmaticengineer.com/p/the-creator-of-clawd-i-ship-code)
-- [Letta](https://www.letta.com/)
 
-## What is the new Codex app and how does it compare to GitHub Copilot?
+* [OpenClaw](https://openclaw.im/)
+* [Wiz.io: Hacking Moltbook - AI Social Network Reveals 1.5M API Keys](https://www.wiz.io/blog/exposed-moltbook-database-reveals-millions-of-api-keys)
+* [Pragmatic Engineer: The creator of Clawd - "I ship code I don't read"](https://newsletter.pragmaticengineer.com/p/the-creator-of-clawd-i-ship-code)
+* [Letta](https://www.letta.com/)
+
+## What is the new Codex app and how does it compare to VS Code Copilot?
 
 📹 [7:40](https://youtube.com/watch?v=V-mUPDW6Tgg&t=460)
 
-The Codex app is brand new as of this week. It's a ChatGPT-style UI for code assistance (not just CLI). Key observations from testing:
+The **Codex app** is a brand-new (as of this week) web-based UI from OpenAI for coding tasks. It's similar to GitHub Copilot's chat interface but runs outside VS Code in a ChatGPT-like UI. It offers three reasoning levels: Codex, Codex High, and Codex Extra High. It can also open projects directly in VS Code, Finder, Terminal, or Xcode.
 
-- Supports multiple reasoning levels: Codex, Codex High, Codex Extra High
-- Has an approval flow for Git commands - asks permission for git add, commit, checkout, and push
-- Can open projects in VS Code, VS Code Insiders, Finder, Terminal, or Xcode
-- MCP integration is apparently challenging ("MCP on Codex is a pain")
+Pamela tested it live by pasting in her Chat Completions to Responses API migration prompt. Using GPT 5.2 with Extra High reasoning, Codex successfully migrated a simple chat app — though it was noticeably slow due to the high reasoning level.
 
-When testing with a prompt to migrate from Chat Completions API to Responses API:
-- GPT 5.2 Extra High successfully completed the migration
-- Created a pull request via `gh pr` command
-- The prompt had guardrails that were stricter than in GitHub Copilot
+One issue encountered: the migration prompt included guardrails saying "do not run git commands," which Codex followed very strictly (unlike GitHub Copilot, which ignored them). When asked to bypass the guardrails, Codex struggled, showing it enforces prompt-level guardrails more rigidly than Copilot.
 
-Interesting finding: When comparing the same migration task done by Codex vs Opus in GitHub Copilot, Codex also changed the frontend to expect Responses format while Opus only changed the backend - something to consider when designing migration prompts.
+Codex also has an explicit approval flow for git operations (git add, commit, checkout, push each require separate approval), which is more cautious than VS Code's approach.
 
-## What are Skills and how do they work in GitHub Copilot?
-
-📹 [15:09](https://youtube.com/watch?v=V-mUPDW6Tgg&t=909)
-
-Skills are markdown files (with optional Python scripts) that extend agent capabilities. They're like MCP tool descriptions - teaching GitHub Copilot specialized capabilities.
-
-Structure of a skill:
-- Located in `.github/skills/` folder
-- Each folder contains a `skill.md` file with name and description
-- The name and description are critical - they're shown to Copilot when deciding whether to invoke the skill
-- Can include Python scripts run with `uv run` (using inline dependencies)
-
-How it works:
-1. VS Code sends skill names, descriptions, and file paths to the model
-2. If the model thinks a skill is relevant, it reads the full skill content
-3. The skill is then invoked
-
-Example skills demonstrated:
-- YouTube transcript extraction
-- YouTube live chat download
-- GitHub discussions Q&A posting
-- PR comment replies (when GitHub MCP server lacks functionality)
-
-Where to find skills:
-- [skills.sh](https://skills.sh/) - community directory (verify security)
-- [Awesome Copilot Skills](https://github.github.com/awesome-copilot/skills/) - Microsoft-specific skills
-- [GitHub Awesome Copilot](https://github.com/github/awesome-copilot/blob/main/docs/README.skills.md)
-
-To enable skills in VS Code Stable, search for "chat agent skills" in settings.
+On the news front, there were reports about OpenAI acquiring/acqui-hiring Cline, though Cline later clarified there was no acquisition — the situation was confusing.
 
 Links shared:
-- [VS Code Skills Documentation](https://code.visualstudio.com/docs/copilot/customization/agent-skills)
-- [skills.sh](https://skills.sh/)
-- [Azure Search OpenAI Demo Prompts](https://github.com/Azure-Samples/azure-search-openai-demo/tree/main/.github/prompts)
 
-### Do you need VS Code Insiders for Skills?
+* [Cline acqui-hire clarification](https://blog.kilo.ai/p/cline-just-acqui-hired)
 
-📹 [27:15](https://youtube.com/watch?v=V-mUPDW6Tgg&t=1635)
+## What are GitHub Copilot Skills and where can you find them?
 
-No, skills work in VS Code Stable but you need to enable them explicitly in settings. Search for "chat agent skills" and enable it since it's in preview.
+📹 [15:07](https://youtube.com/watch?v=V-mUPDW6Tgg&t=907)
+
+**Skills** are markdown files (with optional associated scripts) that teach GitHub Copilot new capabilities. A skill consists of a `SKILL.md` file with a name, description, and instructions. Think of it like an MCP tool description — the name and description determine when Copilot decides to use the skill.
+
+Two directories for finding skills:
+
+1. **[skills.sh](https://skills.sh/)** — A community-built directory, though you should vet skills for security
+2. **[Awesome Copilot](https://github.com/github/awesome-copilot/blob/main/docs/README.skills.md)** — Microsoft-specific skills, with a [website version](https://github.github.com/awesome-copilot/skills/) for browsing
+
+How skills work internally: VS Code only sends the skill **name** and **description** to the model initially. If the model decides a skill is relevant, it then reads the full `SKILL.md` file. This means putting effort into your name and description is crucial — similar to writing good MCP tool descriptions.
+
+For Python-based skills, the recommendation is to use **uv** with inline script metadata to declare dependencies. This way each skill is standalone — no need to set up a full project. This follows the Python standard (PEP 723) for declaring dependencies in a single file.
+
+Links shared:
+
+* [skills.sh](https://skills.sh/)
+* [Awesome Copilot skills list](https://github.com/github/awesome-copilot/blob/main/docs/README.skills.md)
+* [Awesome Copilot skills website](https://github.github.com/awesome-copilot/skills/)
+* [Using Agent Skills in VS Code](https://code.visualstudio.com/docs/copilot/customization/agent-skills)
 
 ### Is there context loss when chaining skills together?
 
 📹 [23:39](https://youtube.com/watch?v=V-mUPDW6Tgg&t=1419)
 
-Context should stay intact within a single VS Code session as long as you haven't exceeded the ~128K token limit causing history compaction. Use the Chat Debug View to see exactly what gets sent to the model and diagnose any issues.
+A viewer noted context loss when skills invoke other skills. Pamela's take: within a single VS Code session, context should persist as long as you haven't exceeded the token limit (e.g., 128K). If you go over the context window, history compaction can cause context loss.
 
-## What's a good workflow for handling PR code reviews?
+If you're experiencing unexpected context loss, use the **Chat Debug View** in VS Code to see exactly what's being sent to the model. This shows the full payload including transcripts, skill contents, and tool calls — invaluable for debugging what the model actually receives.
 
-📹 [29:27](https://youtube.com/watch?v=V-mUPDW6Tgg&t=1767)
+### Do you need VS Code Insiders to use skills?
 
-A recommended workflow for PR reviews:
-1. Get code review comments (from Copilot or colleagues)
-2. Work through each comment one at a time with Copilot
-3. Bounce feedback off another LLM (e.g., if review is from GPT, discuss with Opus)
-4. Decide whether to implement each suggestion
-5. Have Copilot reply inline to comments
+📹 [27:13](https://youtube.com/watch?v=V-mUPDW6Tgg&t=1633)
 
-Note: The GitHub MCP server doesn't have a tool to reply to inline PR comments, so a custom skill using the GraphQL API was created to fill this gap.
+No. Skills are available in **stable VS Code** as a preview feature. You do need to explicitly enable it by searching for "chat agent skills" in settings. You can also click the setting link directly from the VS Code documentation page.
 
-Code reviews remain valuable - they catch things you didn't think about. Balance thoroughness with practicality, especially with Copilot's sometimes overly nitpicky or over-engineered suggestions.
+### What's a practical use case for skills beyond documentation?
+
+📹 [28:34](https://youtube.com/watch?v=V-mUPDW6Tgg&t=1714)
+
+Pamela shared her PR comment reply workflow: when she gets code review comments on a pull request, she works through each comment one at a time with Copilot, deciding whether to implement the suggestion or not. Then she has Copilot reply inline to each comment.
+
+The problem: the **GitHub MCP server** doesn't have a tool for replying to inline PR comments. So she created a skill that teaches Copilot to use the **GraphQL API** instead. This is a great use case for skills — filling gaps in existing MCP server functionality.
+
+She also emphasized the value of getting code reviews from multiple sources. She typically gets Copilot reviews (which tend to use a GPT model) and then discusses the suggestions with a different model (like Opus) to get different perspectives. Sometimes she even bounces suggestions off a human colleague. Code reviews are important because they catch things you didn't think about, but there's a balance — Copilot can be overly critical and nitpicky, sometimes wanting to over-engineer things like exception handling.
 
 Links shared:
-- [PR Review Migration Example](https://github.com/Azure-Samples/openai-chat-app-quickstart/pull/359)
 
-## How can you run multiple agents in parallel?
+* [azure-search-openai-demo prompts](https://github.com/Azure-Samples/azure-search-openai-demo/tree/main/.github/prompts)
+
+## How did Codex compare to Opus for the same migration task?
+
+📹 [32:08](https://youtube.com/watch?v=V-mUPDW6Tgg&t=1928)
+
+After running the same Chat Completions → Responses API migration prompt on both **Codex (GPT 5.2 Extra High)** and **Opus**, interesting differences emerged:
+
+* The **Codex version** changed both the backend AND the frontend to expect Responses API events
+* The **Opus version** only changed the backend, leaving the frontend unchanged
+* The frontend change was actually a good call — something worth considering for the prompt
+
+This highlights the value of trying the same prompt across multiple models to get different perspectives and identify decisions you might not have considered.
+
+Links shared:
+
+* [Codex PR #359](https://github.com/Azure-Samples/openai-chat-app-quickstart/pull/359)
+* [Opus PR #358](https://github.com/Azure-Samples/openai-chat-app-quickstart/pull/358)
+
+## What's the best approach for running multiple agents in parallel?
 
 📹 [43:55](https://youtube.com/watch?v=V-mUPDW6Tgg&t=2635)
 
-Running multiple agents simultaneously is most useful for:
-- Getting different variants on the same feature from different models
-- Running evaluations while doing other work
-- Getting code reviews from multiple models (e.g., `/review` command)
+The most practical use case for running agents in parallel isn't working on 5 different features simultaneously (too much cognitive load), but rather getting **different model perspectives on the same feature**. For example, run GPT 5.2, Opus 4.5, and Gemini 3 on the same task and compare results. The GitHub Copilot CLI's `/review` command already does this — getting reviews from multiple models at once.
 
-In VS Code Insiders, options include:
+In VS Code Insiders, you have three options:
 
-1. **New Chat** - Creates concurrent chats on the same git work tree (same branch)
-   - Good for orthogonal changes or running evals alongside development
-   
-2. **Background Agent** - Creates a different branch locally
+1. **New Chat** — Creates a concurrent chat on the same git work tree/branch. Good for orthogonal changes that won't conflict, or for running evals alongside development
+2. **Background Agent** — Creates a separate branch. Good when you want isolated git work trees
+3. **Cloud Agent** — Also creates a separate branch and sends a pull request. Best for fully independent work
 
-3. **Cloud Agent** - Creates a different branch and sends a pull request
+The key question is: do you want a clean PR? If you're doing a prototype/hobby project, stuff it all in. For a shared codebase with colleagues, keep PRs clean.
 
-Recommendation: Use parallel agents for the same feature with different models (e.g., GPT 5.2, Opus 4.5, Gemini 3) to see different perspectives, rather than trying to mentally juggle five different features simultaneously.
-
-## What is Pamela working on with MCP tool schemas?
+## How do MCP tool type annotations affect agent performance?
 
 📹 [48:17](https://youtube.com/watch?v=V-mUPDW6Tgg&t=2897)
 
-Research for a PyAI talk evaluating how different type annotations affect MCP server tool performance across agents. Testing four different annotations for the same field:
-- Plain string
-- String with description
-- datetime type
-- String with regex constraint
+For an upcoming PyAI talk, Pamela is evaluating how different type annotations for MCP tool parameters affect agent performance. She tested four annotation styles for a date field:
 
-These are tested across four different agents:
-- Pydantic AI
-- LangChain
-- Copilot SDK
-- Agent Framework (MAF)
+1. **Plain string** — No additional info
+2. **String with description** — Adds a text description
+3. **datetime** — Uses Python's datetime type
+4. **String with regex constraint** — Adds a format pattern
 
-Running 27 sample user inputs against each combination shows differences. For example, Copilot SDK with Haiku performed best with annotated strings for dates compared to other annotation styles.
+These were tested across **4 agent frameworks** (Pydantic AI, LangChain, Copilot SDK, Agent Framework) with **27 sample user inputs** and multiple models.
 
-Recommendation: Always set up evaluations for MCP servers to verify tool schemas work as expected. Options include Pydantic AI evals and Azure AI evaluation.
+Results vary significantly by model and agent:
+* **GPT 5.2** did well across all annotation styles (100% on date formatting)
+* **Copilot SDK with Haiku** showed more variation — the **annotated string** performed best, while other approaches had lower success rates (e.g., 89% vs higher)
 
-## Is it safe to use an agent for LinkedIn job searching?
+The takeaway: always set up evaluations for your MCP tool schemas. Different schemas can meaningfully impact how well agents handle your tools, and the best approach varies by model and framework. Pamela uses Pydantic AI evals but noted Azure AI Evaluation works as well.
 
-📹 [55:18](https://youtube.com/watch?v=V-mUPDW6Tgg&t=3318)
+## Is it safe to use a Playwright agent for LinkedIn job search?
 
-Key considerations to avoid getting blocked:
-- **Look like a human**: When using an LLM to reason about what you're looking at, the processing time mimics human behavior
-- **Sandbox browser**: For job searches, run Playwright with default sandbox (no cookies) rather than using your authenticated session
-- **Cookie risk**: Using cookies from your authenticated session carries more risk of being flagged
+📹 [55:16](https://youtube.com/watch?v=V-mUPDW6Tgg&t=3316)
 
-The LinkedIn agent project uses Playwright to visit pages and an LLM to reason about decisions, which takes similar time to manual browsing. This makes it appear human-like during network request acceptance.
+A viewer asked about using automation for LinkedIn job search after seeing Pamela's LinkedIn agent project (which uses Playwright to accept network connection requests).
 
-For job searching specifically, you likely don't need cookies - use a sandboxed browser for safety. At worst, they might block your IP rather than your account.
+The key to not getting blocked: **look like a human**. Pamela's agent works because:
+
+1. It uses an LLM to reason about each page/decision, which takes roughly the same time a human would take
+2. It runs via her cookies in a local browser, making it indistinguishable from manual browsing
+
+For job searching specifically, you likely **don't need cookies** — use Playwright's default sandboxed browser (no cookies). This is safer since:
+* They can't tie the activity to your account as easily
+* They might block your IP, but probably won't
+* The LLM reasoning time still makes you look human
+
+Advice: don't spam companies with applications. Use automation for more efficient searching, not mass applying.
 
 Links shared:
-- [Personal LinkedIn Agent](https://github.com/pamelafox/personal-linkedin-agent)
+
+* [Personal LinkedIn Agent](https://github.com/pamelafox/personal-linkedin-agent)

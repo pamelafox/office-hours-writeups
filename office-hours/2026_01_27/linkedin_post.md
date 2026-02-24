@@ -19,7 +19,7 @@ Topics we covered:
 • Agent League (esports-style coding battles!)
 • Python + Agents series starting soon
 
-Join us live every week: http://aka.ms/aipython/oh
+Join us live every week: http://aka.ms/pythonai/oh
 
 See the recording and full write-up here:
 https://github.com/orgs/microsoft-foundry/discussions/280

@@ -1,7 +1,7 @@
 Weekly Python + AI office hours - January 6, 2026
 
 This is just a recording from the Discord office hours, for those who couldn't attend live.
-Join the live weekly OH here: http://aka.ms/aipython/oh
+Join the live weekly OH here: http://aka.ms/pythonai/oh
 
 See a write-up of each weekly office hours here:
 https://github.com/orgs/microsoft-foundry/discussions/280

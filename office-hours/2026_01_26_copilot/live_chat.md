@@ -1,4 +1,40 @@
-[download]    1.00KiB at    1.60KiB/s (00:00:00) (frag 0)[download]    3.00KiB at    1.60KiB/s (00:00:00) (frag 0)[download]    7.00KiB at    1.60KiB/s (00:00:00) (frag 0)[download]   15.00KiB at    1.60KiB/s (00:00:00) (frag 0)[download]   31.00KiB at    1.60KiB/s (00:00:00) (frag 0)[download]   63.00KiB at    1.60KiB/s (00:00:00) (frag 0)[download]  127.00KiB at    1.60KiB/s (00:00:00) (frag 0)[download]  255.00KiB at  306.98KiB/s (00:00:00) (frag 0)[download]  511.00KiB at  306.98KiB/s (00:00:00) (frag 0)[download] 1023.00KiB at  556.76KiB/s (00:00:00) (frag 0)[download]    1.04MiB at  556.76KiB/s (00:00:00) (frag 0)[download]    1.04MiB at  556.76KiB/s (00:00:00) (frag 1)[download]    1.04MiB at  675.16KiB/s (00:00:00) (frag 1)[download]    1.05MiB at  675.16KiB/s (00:00:01) (frag 1)[download]    1.05MiB at  675.16KiB/s (00:00:01) (frag 1)[download]    1.06MiB at  675.16KiB/s (00:00:01) (frag 1)[download]    1.07MiB at  675.16KiB/s (00:00:01) (frag 1)[download]    1.11MiB at  744.53KiB/s (00:00:01) (frag 1)[download]    1.17MiB at  744.53KiB/s (00:00:01) (frag 1)[download]    1.19MiB at  744.53KiB/s (00:00:01) (frag 1)[download]    1.19MiB at  744.53KiB/s (00:00:01) (frag 2)[download]    1.19MiB at  777.92KiB/s (00:00:01) (frag 2)[download]    1.19MiB at  777.92KiB/s (00:00:01) (frag 2)[download]    1.19MiB at  777.92KiB/s (00:00:01) (frag 2)[download]    1.20MiB at  777.92KiB/s (00:00:01) (frag 2)[download]    1.22MiB at  777.92KiB/s (00:00:01) (frag 2)[download]    1.25MiB at  777.92KiB/s (00:00:01) (frag 2)[download]    1.31MiB at  777.92KiB/s (00:00:01) (frag 2)[download]    1.38MiB at  777.92KiB/s (00:00:01) (frag 2)[download]    1.38MiB at  777.92KiB/s (00:00:01) (frag 3)[download]    1.38MiB at  809.65KiB/s (00:00:01) (frag 3)[download]    1.38MiB at  809.65KiB/s (00:00:01) (frag 3)[download]    1.38MiB at  809.65KiB/s (00:00:01) (frag 4)[download] 100% of   86.33KiB in 00:00:01 at 53.74KiB/s                                                         [00:00:00] [@PamelaFox]: Starting shortly!
+
+[download]    1.00KiB at    1.60KiB/s (00:00:00) (frag 0)
+[download]    3.00KiB at    1.60KiB/s (00:00:00) (frag 0)
+[download]    7.00KiB at    1.60KiB/s (00:00:00) (frag 0)
+[download]   15.00KiB at    1.60KiB/s (00:00:00) (frag 0)
+[download]   31.00KiB at    1.60KiB/s (00:00:00) (frag 0)
+[download]   63.00KiB at    1.60KiB/s (00:00:00) (frag 0)
+[download]  127.00KiB at    1.60KiB/s (00:00:00) (frag 0)
+[download]  255.00KiB at  306.98KiB/s (00:00:00) (frag 0)
+[download]  511.00KiB at  306.98KiB/s (00:00:00) (frag 0)
+[download] 1023.00KiB at  556.76KiB/s (00:00:00) (frag 0)
+[download]    1.04MiB at  556.76KiB/s (00:00:00) (frag 0)
+[download]    1.04MiB at  556.76KiB/s (00:00:00) (frag 1)
+[download]    1.04MiB at  675.16KiB/s (00:00:00) (frag 1)
+[download]    1.05MiB at  675.16KiB/s (00:00:01) (frag 1)
+[download]    1.05MiB at  675.16KiB/s (00:00:01) (frag 1)
+[download]    1.06MiB at  675.16KiB/s (00:00:01) (frag 1)
+[download]    1.07MiB at  675.16KiB/s (00:00:01) (frag 1)
+[download]    1.11MiB at  744.53KiB/s (00:00:01) (frag 1)
+[download]    1.17MiB at  744.53KiB/s (00:00:01) (frag 1)
+[download]    1.19MiB at  744.53KiB/s (00:00:01) (frag 1)
+[download]    1.19MiB at  744.53KiB/s (00:00:01) (frag 2)
+[download]    1.19MiB at  777.92KiB/s (00:00:01) (frag 2)
+[download]    1.19MiB at  777.92KiB/s (00:00:01) (frag 2)
+[download]    1.19MiB at  777.92KiB/s (00:00:01) (frag 2)
+[download]    1.20MiB at  777.92KiB/s (00:00:01) (frag 2)
+[download]    1.22MiB at  777.92KiB/s (00:00:01) (frag 2)
+[download]    1.25MiB at  777.92KiB/s (00:00:01) (frag 2)
+[download]    1.31MiB at  777.92KiB/s (00:00:01) (frag 2)
+[download]    1.38MiB at  777.92KiB/s (00:00:01) (frag 2)
+[download]    1.38MiB at  777.92KiB/s (00:00:01) (frag 3)
+[download]    1.38MiB at  809.65KiB/s (00:00:01) (frag 3)
+[download]    1.38MiB at  809.65KiB/s (00:00:01) (frag 3)
+[download]    1.38MiB at  809.65KiB/s (00:00:01) (frag 4)
+[download] 100% of   86.33KiB in 00:00:01 at 53.74KiB/s  
+                                                       
+[00:00:00] [@PamelaFox]: Starting shortly!
 [00:00:00] [@CarlosPCmx]: HI thanks!!
 [00:00:48] [@john0isaac]: Hii
 [00:02:13] [@arielrivera]: Hola from Texas!
@@ -12,7 +48,7 @@
 [00:27:34] [@john0isaac]: not the same as vscode tools
 [00:29:49] [@PamelaFox]: https://github.com/github/copilot-sdk
 [00:31:00] [@john0isaac]: The pr visualization example is cool
-[00:32:39] [@john0isaac]: I fixed them 
+[00:32:39] [@john0isaac]: I fixed them pythonai
 [00:32:49] [@john0isaac]: sent it to you on teams
 [00:33:06] [@john0isaac]: nope lol
 [00:34:01] [@john0isaac]: I think it's a different version of the cli

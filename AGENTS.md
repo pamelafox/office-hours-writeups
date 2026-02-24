@@ -9,7 +9,7 @@ When generating the write-up, follow these steps:
 * Use the youtube-transcript skill to fetch the transcript of the YouTube video for that week's office hours. Make sure to include timestamps. Store in transcript.md.
 * Use the youtube-live-chat skill to fetch the live chat from the YouTube video. This can provide additional context like links shared in chat. Store in live_chat.md.
 * Identify the main questions and answers
-* Generate a markdown file at "office-hours/YYYY_MM_DD/questions_answers.md" with each question as a header (##) and the corresponding answer below it. If there are follow-up questions, use sub-headers (###) for those. Do not include the "upcoming events" as a section in the write-up.
+* Generate a markdown file at "office-hours/YYYY_MM_DD/questions_answers.md" with each question as a header (##) and the corresponding answer below it. If there are follow-up questions, use sub-headers (###) for those. Do not include the "upcoming events" as a section in the write-up. For announcements that do not correspond to user questions, create a separate section at the end of the write-up with the header "Announcements".
 * Include a timestamp link below each heading, linking to that point in the YouTube video.
 
 For example:
@@ -63,10 +63,10 @@ For example:
 Weekly Python + AI office hours - January 6, 2026
 
 This is just a recording from the Discord office hours, for those who couldn't attend live.
-Join the live weekly OH here: http://aka.ms/aipython/oh
+Join the live weekly OH here: http://aka.ms/pythonai/oh
 
 See a write-up of each weekly office hours here:
-https://github.com/orgs/microsoft-foundry/discussions/280
+https://aka.ms/pythonai/oh/links
 
 Timestamps:
 0:00 Intro
@@ -105,7 +105,7 @@ Topics we covered:
 
 📚 The tutorial trap: How to move from watching to building
 
-Join us live every week: http://aka.ms/aipython/oh
+Join us live every week: http://aka.ms/pythonai/oh
 
 See the recording and questions here:
 https://github.com/orgs/microsoft-foundry/discussions/280
