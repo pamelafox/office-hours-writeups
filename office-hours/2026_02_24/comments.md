@@ -1,0 +1,16 @@
+# Feb 24, 2026 Discussion Comments
+
+- [How does middleware work in the Agent Framework?](#discussioncomment-15919781)
+- [Why do the tools in the demos have hard-coded return values?](#discussioncomment-15919782)
+- [How does "context" differ across frameworks?](#discussioncomment-15919783)
+- [What should I do if I get an "unavailable model" error with GPT-5 Mini?](#discussioncomment-15919784)
+- [Is it possible to see the full information sent to the LLM?](#discussioncomment-15919785)
+- [Were these examples hand-coded or vibe-coded?](#discussioncomment-15919786)
+- [Do you recommend starting with a deployed model (Azure Foundry) for learning agents?](#discussioncomment-15919787)
+- [Can you use local Ollama models with the Agent Framework?](#discussioncomment-15919788)
+- [Are all the models you're using free?](#discussioncomment-15919789)
+- [Does the tracing in Agent Framework work with OpenAI tracing?](#discussioncomment-15919791)
+- [How does the supervisor agent pattern work?](#discussioncomment-15919792)
+- [Can you use GitHub Copilot models with the Agent Framework?](#discussioncomment-15919793)
+- [Do you always use Codespaces or only for demos?](#discussioncomment-15919794)
+- [What is YOLO mode in Copilot?](#discussioncomment-15919795)
