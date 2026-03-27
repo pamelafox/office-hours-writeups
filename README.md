@@ -8,7 +8,7 @@ This repo turns recordings of weekly Discord office hours into structured Q&A wr
 
 1. Add a new folder under `office-hours/` for each week's office hours, named with the date in `YYYY_MM_DD` format. Add `raw.md` with raw resources: typically that's the YouTube recording links, Discord pasted chat logs, and weekly slide content.
 
-2. Ask GitHub Copilot to generate the structured Q&A write-up using `/generate-writeup prompt` or the following instruction:
+2. Ask GitHub Copilot to generate the structured Q&A write-up using `/generate-writeup` prompt or the following instruction:
 
     ```text
     Generate a markdown write-up of the weekly Python + AI office hours held on DATE.
