@@ -1,0 +1,7 @@
+* [Update: Do Foundry evaluations stay in your tenant?](../../../microsoft-foundry/discussions/discussions/280#discussioncomment-16748792)
+* [How could we use GraphRAG from Cosmos DB in a hosted agent for memory and knowledge?](../../../microsoft-foundry/discussions/discussions/280#discussioncomment-16748793)
+* [Which model is best for RAG-based chatbots?](../../../microsoft-foundry/discussions/discussions/280#discussioncomment-16748794)
+* [How come I can't deploy the Mistral OCR model anymore?](../../../microsoft-foundry/discussions/discussions/280#discussioncomment-16748795)
+* [I'm getting 408 timeouts when asking the model to query multiple tools at once — is it a prompt issue or a model issue?](../../../microsoft-foundry/discussions/discussions/280#discussioncomment-16748796)
+* [Any inputs on PageIndex vs. vector RAG?](../../../microsoft-foundry/discussions/discussions/280#discussioncomment-16748797)
+* [Announcements](../../../microsoft-foundry/discussions/discussions/280#discussioncomment-16748798)
