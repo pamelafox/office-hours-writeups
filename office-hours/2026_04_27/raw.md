@@ -9,7 +9,6 @@ https://www.youtube.com/watch?v=o4-1LI3-uqw
 No slides for the office hours itself, this session was a follow-up office hours after this livestream:
 https://developer.microsoft.com/en-us/reactor/events/26932/
 
-
 # Browser open tabs
 
 https://github.com/orgs/microsoft-foundry/discussions/380
