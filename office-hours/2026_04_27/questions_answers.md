@@ -172,7 +172,15 @@ Links shared:
 
 📹 [30:05](https://youtube.com/watch?v=o4-1LI3-uqw&t=1805)
 
-If the publish button has disappeared, it may be a bug or an intentional change related to network-disabled configurations. Pamela will check with the product team.
+We weren't able to answer this during the session, but researched an answer after:
+
+Publishing prompt agents (not hosted agents) with public network access disabled is not reliably supported. The agent's messaging endpoint — an Azure Bot endpoint managed by Foundry — must be reachable by external Microsoft channels such as Teams and Copilot. When you restrict access to private endpoints only, those external services cannot reach the endpoint, so publish flows can fail (for example with HTTP 403).
+
+[Check this blog post for a possible workaround](https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/foundry-agents-and-custom-engine-agents-through-the-corporate-firewall/4502218): download the prepared agent package from a public Foundry project, update the names and IDs in `manifest.json`, re-zip it, and upload it manually via the [Teams Admin Center](https://admin.teams.microsoft.com). Then go to the [Microsoft 365 Admin Center](https://admin.microsoft.com/), find the agent, and deploy it from there. For routing traffic through a corporate firewall more broadly, the linked blog post describes using Azure API Management (or a YARP reverse proxy) to terminate TLS with your own certificate, validate the Bot Framework JWT on every inbound request, and forward traffic to the agent's private endpoint — while configuring outbound firewall rules to allow replies back to Microsoft's Bot channel adapters.
+
+Links shared:
+
+* [Foundry Agents and custom engine agents through the corporate firewall](https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/foundry-agents-and-custom-engine-agents-through-the-corporate-firewall/4502218)
 
 ## Which endpoint do you use to connect to an agent from an external app?
 
@@ -202,9 +210,9 @@ If you're curious what roles are assigned to your agent's identity after a defau
 
 📹 [35:51](https://youtube.com/watch?v=o4-1LI3-uqw&t=2151)
 
-This is an open question. The hosted agent endpoint is an HTTP endpoint using Entra authentication, so in theory an API gateway (Azure API Management) should be able to proxy it as long as it can pass along the Entra token. Azure also has a separate "AI gateway" concept within API Management with GenAI-specific capabilities.
+For Foundry hosted agents, routing through an API gateway is explicitly supported but applies to model traffic rather than the agent's messaging endpoint. You can apply policies the model calls such as rate limiting, authentication, and governance controls. This supports API keys, managed identity, and OAuth, and works in both public and network-isolated configurations.
 
-Pamela couldn't find specific documentation about proxying Foundry Agent Service through API Management and noted this as a follow-up question for the product team.
+You should also be able to manually configure APIM in front of the hosted agent's responses API endpoint itself — since that endpoint uses standard Entra authentication, APIM can proxy it and apply policies at that layer as well.
 
 Links shared:
 
