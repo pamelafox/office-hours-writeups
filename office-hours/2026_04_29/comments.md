@@ -1,0 +1,17 @@
+# Comments posted to Discussion #380
+
+* [Can Foundry managed conversations/memory be used standalone with a LangGraph agent hosted on Azure Web App?](#discussioncomment-16770551)
+* [Is the knowledge retrieval MCP server part of Microsoft Foundry?](#discussioncomment-16770552)
+* [How should I handle short-term and long-term memory when deploying LangGraph/LangChain as hosted agents?](#discussioncomment-16770553)
+* [How should I handle compaction for LangChain/LangGraph hosted agents?](#discussioncomment-16770555)
+* [What features are unavailable when using LangChain/LangGraph instead of Agent Framework for hosted agents?](#discussioncomment-16770557)
+* [How does scaling work with stateful hosted agents? How is state shared between replicas?](#discussioncomment-16770559)
+* [How does pricing work for hosted agents with parallel API calls?](#discussioncomment-16770560)
+* [What was the code mode tool mentioned on Monday similar to Monty?](#discussioncomment-16770561)
+* [Can I host an app using Foundry local models (like Phi) in a hosted agent container?](#discussioncomment-16770563)
+* [How can we aggregate cost of execution from Foundry Traces or App Insights?](#discussioncomment-16770564)
+* [Any recommendations for keyword classification routing in multi-agent environments?](#discussioncomment-16770565)
+* [How do I set up tracing for different frameworks (LangGraph + OpenAI SDK)?](#discussioncomment-16770566)
+* [Would Cosmos DB make sense for LangChain/LangGraph hosted agents for short and long-term memories?](#discussioncomment-16770568)
+* [Any recommendations to handle vector drift over the long run?](#discussioncomment-16770569)
+* [Announcements](#discussioncomment-16770570)
