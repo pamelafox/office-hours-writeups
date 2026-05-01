@@ -1,0 +1,15 @@
+# Comments posted to Discussion #380
+
+* [Are there evals that score on cost and token efficiency?](https://github.com/orgs/microsoft-foundry/discussions/380#discussioncomment-16776932)
+* [Are there built-in evaluators that don't depend on LLM-as-a-judge?](https://github.com/orgs/microsoft-foundry/discussions/380#discussioncomment-16776933)
+* [How can agent context (like memory) be included in quality evaluations?](https://github.com/orgs/microsoft-foundry/discussions/380#discussioncomment-16776934)
+* [In a multi-agent environment, should we have evals for each agent or just the final response?](https://github.com/orgs/microsoft-foundry/discussions/380#discussioncomment-16776935)
+* [What does the "Analyze Results" cluster analysis do? Is it like theme analysis?](https://github.com/orgs/microsoft-foundry/discussions/380#discussioncomment-16776937)
+* [How can you approach streaming and online evaluation together?](https://github.com/orgs/microsoft-foundry/discussions/380#discussioncomment-16776938)
+* [What is the recommended practice for running evals after the app is live?](https://github.com/orgs/microsoft-foundry/discussions/380#discussioncomment-16776939)
+* [Can images and audio be used in Foundry safety evaluations?](https://github.com/orgs/microsoft-foundry/discussions/380#discussioncomment-16776940)
+* [How does Azure AI Search compare to Work IQ, and how can you evaluate Work IQ retrieval?](https://github.com/orgs/microsoft-foundry/discussions/380#discussioncomment-16776941)
+* [How do you integrate evals with CI/CD?](https://github.com/orgs/microsoft-foundry/discussions/380#discussioncomment-16776942)
+* [Are there roadmaps for Foundry preview features going GA?](https://github.com/orgs/microsoft-foundry/discussions/380#discussioncomment-16776943)
+* [Is there an agent or tool that can help create evaluations automatically in Foundry?](https://github.com/orgs/microsoft-foundry/discussions/380#discussioncomment-16776945)
+* [Announcements](https://github.com/orgs/microsoft-foundry/discussions/380#discussioncomment-16776946)

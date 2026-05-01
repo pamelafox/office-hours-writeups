@@ -18,7 +18,7 @@ For example:
 
 📹 [12:34](https://youtube.com/watch?v=VIDEO_ID&t=754)
 
-Answer to question 1.
+Answer to question 1. Use [inline links](https://example.com) in the answer text when there's a natural word or phrase to link (e.g., linking "custom evaluators" to the docs page about custom evaluators). Only include a separate "Links shared" section for links that don't have an obvious inline anchor in the text.
 
 Links shared:
 
