@@ -1,0 +1,5 @@
+* [Which TTS model do you recommend using locally (offline)?](https://github.com/orgs/microsoft-foundry/discussions/280#discussioncomment-16995051)
+* [How can I experiment with generative UI / A2UI?](https://github.com/orgs/microsoft-foundry/discussions/280#discussioncomment-16995052)
+* [What is Pydantic Monty and how can it be used with agents?](https://github.com/orgs/microsoft-foundry/discussions/280#discussioncomment-16995054)
+* [Can I use GitHub Copilot (VS Code) with a model deployed in Foundry?](https://github.com/orgs/microsoft-foundry/discussions/280#discussioncomment-16995055)
+* [Announcements](https://github.com/orgs/microsoft-foundry/discussions/280#discussioncomment-16995056)
