@@ -1,0 +1,5 @@
+* [How do you like the GitHub Copilot Desktop app so far?](https://github.com/microsoft-foundry/discussions/discussions/280#discussioncomment-17071057)
+* [Are all models used through GitHub Copilot protected against prompt injection?](https://github.com/microsoft-foundry/discussions/discussions/280#discussioncomment-17071058)
+* [What security sandboxing options exist for coding agents?](https://github.com/microsoft-foundry/discussions/discussions/280#discussioncomment-17071061)
+* [What is Docker Agent and how does it compare to Foundry hosted agents?](https://github.com/microsoft-foundry/discussions/discussions/280#discussioncomment-17071062)
+* [Announcements](https://github.com/microsoft-foundry/discussions/discussions/280#discussioncomment-17071063)
