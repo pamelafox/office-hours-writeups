@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🐍 Python + AI Office Hours — Weekly News</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      min-height: 100vh;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, var(--cp-accent), var(--cp-link));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--cp-text-muted);
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      flex: 1;
+    }
+
+    .column {
+      background: var(--cp-surface);
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 0 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.14);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .column-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--cp-border);
+    }
+
+    .column-emoji {
+      font-size: 1.5rem;
+    }
+
+    .column-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--cp-text);
+    }
+
+    .column.ms .column-title {
+      color: #6F2DA8;
+    }
+
+    .column.industry .column-title {
+      color: #1A7F37;
+    }
+
+    .column.mywork .column-title {
+      color: #0D6EFD;
+    }
+
+    .items {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      flex: 1;
+    }
+
+    .item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 12px;
+      background: var(--cp-surface-soft);
+      border-radius: 10px;
+      border: 1px solid var(--cp-border);
+      transition: all 0.2s ease;
+    }
+
+    .item:hover {
+      background: var(--cp-highlight);
+      border-color: var(--cp-accent);
+      transform: translateY(-2px);
+    }
+
+    .item-text {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--cp-text);
+      line-height: 1.5;
+    }
+
+    .item-link {
+      font-size: 0.85rem;
+      color: var(--cp-link);
+      text-decoration: none;
+      word-break: break-all;
+      display: inline-block;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: color 0.2s ease;
+    }
+
+    .item-link:hover {
+      color: var(--cp-accent);
+      text-decoration: underline;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--cp-border);
+      color: var(--cp-text-muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 1200px) {
+      .columns {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .title {
+        font-size: 2rem;
+      }
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--cp-bg);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--cp-border);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--cp-border-strong);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="title">🐍 Python + AI Office Hours</h1>
+      <p class="subtitle">Weekly News Roundup — June 16, 2026</p>
+    </div>
+
+    <div class="columns">
+      <!-- Microsoft / GitHub Column -->
+      <div class="column ms">
+        <div class="column-header">
+          <div class="column-emoji">🏢</div>
+          <h2 class="column-title">Microsoft / GitHub</h2>
+        </div>
+        <div class="items">
+          <div class="item">
+            <div class="item-text">GitHub Copilot App now GA — multi-repo, /orchestrate, canvases</div>
+            <a href="https://gh.io/app-ga" class="item-link">gh.io/app-ga</a>
+          </div>
+          <div class="item">
+            <div class="item-text">Copilot in JetBrains moving to Copilot CLI as default agent harness</div>
+            <a href="https://twitter.com/NickZhu9/status/2067153622690091088" class="item-link">twitter.com/NickZhu9</a>
+          </div>
+          <div class="item">
+            <div class="item-text">Copilot SDK & CLI work with any open-source model, not just OpenAI</div>
+            <a href="https://gh.io/app-ga" class="item-link">gh.io/app-ga</a>
+          </div>
+          <div class="item">
+            <div class="item-text">Replace "https" → "gh" on any repo URL to open in Copilot App</div>
+            <a href="http://GitHub.com" class="item-link">github.com</a>
+          </div>
+          <div class="item">
+            <div class="item-text">GitHub Blog: What are git worktrees and why use them?</div>
+            <a href="https://github.blog/ai-and-ml/github-copilot/what-are-git-worktrees-and-why-should-i-use-them/" class="item-link">github.blog — git worktrees</a>
+          </div>
+          <div class="item">
+            <div class="item-text">Microsoft Build 2026 developer recap</div>
+            <a href="https://developer.microsoft.com/blog/build-recap" class="item-link">developer.microsoft.com/blog/build-recap</a>
+          </div>
+          <div class="item">
+            <div class="item-text">VS Code blog: token efficiency improvements in Copilot Chat</div>
+            <a href="https://code.visualstudio.com/blogs/2026/06/17/improving-token-efficiency-in-github-copilot" class="item-link">code.visualstudio.com/blogs</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Industry Column -->
+      <div class="column industry">
+        <div class="column-header">
+          <div class="column-emoji">🌐</div>
+          <h2 class="column-title">Industry</h2>
+        </div>
+        <div class="items">
+          <div class="item">
+            <div class="item-text">SpaceX to acquire Anysphere (Cursor) for $60B</div>
+            <a href="https://www.reuters.com/legal/transactional/spacex-buy-anysphere-60-billion-2026-06-16/" class="item-link">reuters.com</a>
+          </div>
+          <div class="item">
+            <div class="item-text">Astral (uv, Ruff, ty) joins OpenAI — TalkPython interview with Charlie Marsh</div>
+            <a href="https://talkpython.fm/episodes/show/552/astral-joins-openai" class="item-link">talkpython.fm/episodes/show/552</a>
+          </div>
+
+          <div class="item">
+            <div class="item-text">Cursor launches Origin — code storage & git hosting for agents</div>
+            <a href="https://cursor.com" class="item-link">cursor.com</a>
+          </div>
+          <div class="item">
+            <div class="item-text">Anthropic admits flagship model no better than competitors</div>
+            <a href="https://twitter.com/intellectronica" class="item-link">twitter.com/intellectronica</a>
+          </div>
+          <div class="item">
+            <div class="item-text">Gemini 3.5 Live Translate: real-time voice translation</div>
+            <a href="https://blog.google" class="item-link">blog.google</a>
+          </div>
+          <div class="item">
+            <div class="item-text">"Code as Agent Harness" research paper</div>
+            <a href="https://arxiv.org" class="item-link">arxiv.org</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- My Work Column -->
+      <div class="column mywork">
+        <div class="column-header">
+          <div class="column-emoji">👩‍💻</div>
+          <h2 class="column-title">What I've Been Up To</h2>
+        </div>
+        <div class="items">
+          <div class="item">
+            <div class="item-text">🎥 POSETTE 2026 talk: "An MCP for your Postgres DB"</div>
+            <a href="https://youtu.be/3_JPHuXgDyQ" class="item-link">youtu.be/3_JPHuXgDyQ</a>
+          </div>
+          <div class="item">
+            <div class="item-text">Attended Cursor Compile conference — chalk talks, Claire Vo on PM</div>
+            <a href="https://x.com/pamelafox/status/2067011910927892580" class="item-link">x.com/pamelafox — Cursor Compile</a>
+          </div>
+          <div class="item">
+            <div class="item-text">azure-search-openai-demo: default model → gpt-5.4-mini</div>
+            <a href="https://github.com/Azure-Samples/azure-search-openai-demo/releases/tag/2026-06-11" class="item-link">azure-search-openai-demo release</a>
+          </div>
+
+          <div class="item">
+            <div class="item-text">model-swap-workshop: new repo for model swapping</div>
+            <a href="https://github.com/pamelafox/model-swap-workshop" class="item-link">github.com/pamelafox/model-swap-workshop</a>
+          </div>
+          <div class="item">
+            <div class="item-text">Filed: Anthropic Messages API support in langchain-azure</div>
+            <a href="https://github.com/langchain-ai/langchain-azure/issues/673" class="item-link">langchain-azure #673</a>
+          </div>
+          <div class="item">
+            <div class="item-text">Filed: Bump anthropic SDK in agent-framework</div>
+            <a href="https://github.com/microsoft/agent-framework/issues/6484" class="item-link">agent-framework #6484</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>🔄 Updated: June 17, 2026 • News from June 10–17</p>
+    </div>
+  </div>
+</body>
+</html>

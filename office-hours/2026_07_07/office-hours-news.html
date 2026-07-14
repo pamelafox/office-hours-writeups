@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🐍 Python + AI Office Hours — Weekly News</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      min-height: 100vh;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, var(--cp-accent), var(--cp-link));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--cp-text-muted);
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      flex: 1;
+    }
+
+    .column {
+      background: var(--cp-surface);
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 0 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.14);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .column-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--cp-border);
+    }
+
+    .column-emoji { font-size: 1.5rem; }
+
+    .column-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--cp-text);
+    }
+
+    .column.ms .column-title { color: #6F2DA8; }
+    .column.industry .column-title { color: #1A7F37; }
+    .column.mywork .column-title { color: #0D6EFD; }
+
+    .items {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      flex: 1;
+    }
+
+    .item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 12px;
+      background: var(--cp-surface-soft);
+      border-radius: 10px;
+      border: 1px solid var(--cp-border);
+      transition: all 0.2s ease;
+    }
+
+    .item:hover {
+      background: var(--cp-highlight);
+      border-color: var(--cp-accent);
+      transform: translateY(-2px);
+    }
+
+    .item-text {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--cp-text);
+      line-height: 1.5;
+    }
+
+    .item-link {
+      font-size: 0.85rem;
+      color: var(--cp-link);
+      text-decoration: none;
+      word-break: break-all;
+      display: inline-block;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: color 0.2s ease;
+    }
+
+    .item-link:hover {
+      color: var(--cp-accent);
+      text-decoration: underline;
+    }
+
+    .events-subsection {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--cp-border);
+    }
+    .events-subtitle {
+      font-size: 1rem;
+      color: var(--cp-text);
+      margin: 0 0 12px 0;
+    }
+    .events-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .events-table th {
+      text-align: left;
+      color: var(--cp-text-muted);
+      font-weight: 600;
+      padding: 4px 8px 6px 0;
+      border-bottom: 1px solid var(--cp-border);
+    }
+    .events-table td {
+      padding: 6px 8px 6px 0;
+      color: var(--cp-text);
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--cp-border);
+      color: var(--cp-text-muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 1200px) {
+      .columns { grid-template-columns: 1fr; gap: 32px; }
+      .title { font-size: 2rem; }
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--cp-bg); }
+    ::-webkit-scrollbar-thumb { background: var(--cp-border); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--cp-border-strong); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="title">🐍 Python + AI Office Hours</h1>
+      <p class="subtitle">Weekly News Roundup — July 7, 2026</p>
+    </div>
+
+    <div class="columns">
+      <!-- Microsoft / GitHub -->
+      <div class="column ms">
+        <div class="column-header">
+          <span class="column-emoji">🏢</span>
+          <span class="column-title">Microsoft / GitHub</span>
+        </div>
+        <div class="items">
+          <div class="item">
+            <div class="item-text">GitHub Copilot Vision is now generally available — attach images &amp; PDFs to chat</div>
+            <a class="item-link" href="https://github.blog/changelog/2026-07-01-copilot-vision-is-generally-available/" target="_blank">github.blog/changelog</a>
+          </div>
+          <div class="item">
+            <div class="item-text">Kimi K2.7 lands in Copilot — first open-weight model in the model picker</div>
+            <a class="item-link" href="https://github.blog/changelog/2026-07-01-kimi-k2-7-is-now-available-in-github-copilot/" target="_blank">github.blog/changelog</a>
+          </div>
+          <div class="item">
+            <div class="item-text">Optimizing the VS Code coding harness for each model provider (prompt tuning)</div>
+            <a class="item-link" href="https://code.visualstudio.com/blogs/2026/07/06/optimizing-vscode-coding-harness-model-providers" target="_blank">code.visualstudio.com/blogs</a>
+          </div>
+          <div class="item">
+            <div class="item-text">Grounding at scale: engineering the retrieval system for the agentic web</div>
+            <a class="item-link" href="https://commandline.microsoft.com/grounding-system-agentic-web-engineering-retrieval/" target="_blank">commandline.microsoft.com</a>
+          </div>
+          <div class="item">
+            <div class="item-text">Microsoft Agent Framework v1.0 is stable — and what's coming next</div>
+            <a class="item-link" href="https://github.com/microsoft/agent-framework" target="_blank">github.com/microsoft/agent-framework</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Industry -->
+      <div class="column industry">
+        <div class="column-header">
+          <span class="column-emoji">🌐</span>
+          <span class="column-title">Industry</span>
+        </div>
+        <div class="items">
+          <div class="item">
+            <div class="item-text">Impressions from visiting OpenAI, Anthropic &amp; Cursor (The Pulse)</div>
+            <a class="item-link" href="https://newsletter.pragmaticengineer.com/p/impressions-from-visiting-openai-anthropic-cursor" target="_blank">newsletter.pragmaticengineer.com</a>
+          </div>
+          <div class="item">
+            <div class="item-text">How Kent Beck shapes the software engineering industry</div>
+            <a class="item-link" href="https://newsletter.pragmaticengineer.com/p/how-kent-beck-shapes-software-engineering" target="_blank">newsletter.pragmaticengineer.com</a>
+          </div>
+          <div class="item">
+            <div class="item-text">Tech jobs market in 2026, part 3: hiring managers &amp; job seekers</div>
+            <a class="item-link" href="https://newsletter.pragmaticengineer.com/p/tech-jobs-market-in-2026-part-3" target="_blank">newsletter.pragmaticengineer.com</a>
+          </div>
+          <div class="item">
+            <div class="item-text">AI changes the way we build — Ryo Lu on the new dev workflow (Cursor Compile)</div>
+            <a class="item-link" href="https://www.youtube.com/watch?v=az6OEZV8iHw" target="_blank">youtube.com/watch</a>
+          </div>
+          <div class="item">
+            <div class="item-text">PMing in the AI era — Claire Vo on product management with agents</div>
+            <a class="item-link" href="https://www.youtube.com/watch?v=4CAFK-rc26A" target="_blank">youtube.com/watch</a>
+          </div>
+          <div class="item">
+            <div class="item-text">DSPy keynote at AI Engineer World's Fair — programming, not prompting</div>
+            <a class="item-link" href="https://dspy.ai/" target="_blank">dspy.ai</a>
+          </div>
+          <div class="item">
+            <div class="item-text">Anthropic redeploys Claude Fable 5 after export controls lifted</div>
+            <a class="item-link" href="https://www.anthropic.com/news" target="_blank">anthropic.com/news</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- What I've Been Up To -->
+      <div class="column mywork">
+        <div class="column-header">
+          <span class="column-emoji">👩‍💻</span>
+          <span class="column-title">What I've Been Up To</span>
+        </div>
+        <div class="items">
+          <div class="item">
+            <div class="item-text">Presented "Choose the right stack for building AI apps" @ AI Engineer World's Fair</div>
+            <a class="item-link" href="https://aka.ms/ai-stack-slides" target="_blank">aka.ms/ai-stack-slides</a>
+          </div>
+          <div class="item">
+            <div class="item-text">Talk demo code &amp; samples — build with Foundry models across the stack</div>
+            <a class="item-link" href="https://aka.ms/ai-stack" target="_blank">aka.ms/ai-stack</a>
+          </div>
+          <div class="item">
+            <div class="item-text">Attended AI Engineer World's Fair in San Francisco (DSPy, FastMCP, Codex &amp; more)</div>
+            <a class="item-link" href="https://www.ai.engineer/" target="_blank">ai.engineer</a>
+          </div>
+          <div class="item">
+            <div class="item-text">Curated 4 new dev links this week in my bookmarked-links repo</div>
+            <a class="item-link" href="https://github.com/pamelafox/bookmarked-links" target="_blank">github.com/pamelafox/bookmarked-links</a>
+          </div>
+          <div class="item">
+            <div class="item-text">Docs refresh &amp; PRs on the Foundry hosted Agent Framework demos</div>
+            <a class="item-link" href="https://github.com/Azure-Samples/foundry-hosted-agentframework-demos" target="_blank">github.com/Azure-Samples</a>
+          </div>
+
+          <div class="events-subsection">
+            <h3 class="events-subtitle">📅 Upcoming Events</h3>
+            <table class="events-table">
+              <thead>
+                <tr><th>Date</th><th>Event</th><th>Location</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Tue · 11 AM PT</td>
+                  <td><a class="item-link" href="https://aka.ms/pythonai/oh/links" target="_blank">Python + AI Weekly Office Hours</a></td>
+                  <td>Online · Foundry Discord</td>
+                </tr>
+                <tr>
+                  <td>Jul 21</td>
+                  <td><a class="item-link" href="https://luma.com/0n0jo456" target="_blank">Model Mastery with Cohere</a></td>
+                  <td>San Francisco</td>
+                </tr>
+                <tr>
+                  <td>Jul 28–30</td>
+                  <td><a class="item-link" href="https://aka.ms/IQDeepDivePython/series" target="_blank">Microsoft IQ with Python</a></td>
+                  <td>Online · YouTube</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      Covering June 30 – July 7, 2026 · Python + AI Office Hours with Pamela Fox
+    </div>
+  </div>
+</body>
+</html>

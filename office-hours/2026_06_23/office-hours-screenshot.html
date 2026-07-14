@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🐍 Python + AI Office Hours — Weekly News</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      min-height: 100vh;
+      padding: 16px 24px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, var(--cp-accent), var(--cp-link));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--cp-text-muted);
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      flex: 1;
+    }
+
+    .column {
+      background: var(--cp-surface);
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 0 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.14);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .column-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--cp-border);
+    }
+
+    .column-emoji { font-size: 1.5rem; }
+
+    .column-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--cp-text);
+    }
+
+    .column.ms .column-title { color: #6F2DA8; }
+    .column.industry .column-title { color: #1A7F37; }
+    .column.mywork .column-title { color: #0D6EFD; }
+
+    .items {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 10px;
+      background: var(--cp-surface-soft);
+      border-radius: 10px;
+      border: 1px solid var(--cp-border);
+      transition: all 0.2s ease;
+    }
+
+    .item:hover {
+      background: var(--cp-highlight);
+      border-color: var(--cp-accent);
+      transform: translateY(-2px);
+    }
+
+    .item-text {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--cp-text);
+      line-height: 1.4;
+    }
+
+    .item-link {
+      font-size: 0.85rem;
+      color: var(--cp-link);
+      text-decoration: none;
+      word-break: break-all;
+      display: inline-block;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: color 0.2s ease;
+    }
+
+    .item-link:hover {
+      color: var(--cp-accent);
+      text-decoration: underline;
+    }
+
+    .events-subsection {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--cp-border);
+    }
+    .events-subtitle {
+      font-size: 1rem;
+      color: var(--cp-text);
+      margin: 0 0 12px 0;
+    }
+    .events-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .events-table th {
+      text-align: left;
+      color: var(--cp-text-muted);
+      font-weight: 600;
+      padding: 4px 8px 6px 0;
+      border-bottom: 1px solid var(--cp-border);
+    }
+    .events-table td {
+      padding: 6px 8px 6px 0;
+      color: var(--cp-text);
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--cp-border);
+      color: var(--cp-text-muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 1200px) {
+      .columns { grid-template-columns: 1fr; gap: 32px; }
+      .title { font-size: 2rem; }
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--cp-bg); }
+    ::-webkit-scrollbar-thumb { background: var(--cp-border); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--cp-border-strong); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="title">🐍 Python + AI Office Hours — June 23, 2026</h1>
+      <p class="subtitle">Weekly News Roundup</p>
+    </div>
+
+    <div class="columns">
+      <!-- Microsoft / GitHub Column -->
+      <div class="column ms">
+        <div class="column-header">
+          <div class="column-emoji">🏢</div>
+          <h2 class="column-title">Microsoft / GitHub</h2>
+        </div>
+        <div class="items">
+          <div class="item">
+            <div class="item-text">Copilot App BYOK — works with Ollama, Foundry, any OAI/Anthropic endpoint</div>
+            
+          </div>
+          <div class="item">
+            <div class="item-text">Auto model selection GA in Copilot Chat — 10% billing discount</div>
+            
+          </div>
+          <div class="item">
+            <div class="item-text">MAI-Code-1-Flash expanded across Copilot CLI, App, and VS Code</div>
+            
+          </div>
+          <div class="item">
+            <div class="item-text">GitHub Issues: MCP support + duplicate detection preview</div>
+            
+          </div>
+          <div class="item">
+            <div class="item-text">VS Code BYOK: bring your own AI models, no Copilot account needed</div>
+            
+          </div>
+          <div class="item">
+            <div class="item-text">Enterprise-managed MCP authorization now in VS Code</div>
+            
+          </div>
+          <div class="item">
+            <div class="item-text">Agent Framework Python 1.9.0 — middleware, tool approval, orchestrations 1.0</div>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- Industry Column -->
+      <div class="column industry">
+        <div class="column-header">
+          <div class="column-emoji">🌐</div>
+          <h2 class="column-title">Industry</h2>
+        </div>
+        <div class="items">
+          <div class="item">
+            <div class="item-text">uv audit: native vulnerability scanning for Python dependencies</div>
+            
+          </div>
+          <div class="item">
+            <div class="item-text">SkillsBench: benchmark for how well models use skills</div>
+            
+          </div>
+          <div class="item">
+            <div class="item-text">AI Engineer World's Fair schedule — MCP server, iCal, llms.txt</div>
+            
+          </div>
+          <div class="item">
+            <div class="item-text">OpenAI Responses API: WebSocket mode for lower latency</div>
+            
+          </div>
+          <div class="item">
+            <div class="item-text">OpenAI Responses API: tool search for large toolsets</div>
+            
+          </div>
+          <div class="item">
+            <div class="item-text">MCP gets its missing enterprise authorization layer</div>
+            
+          </div>
+          <div class="item">
+            <div class="item-text">Paper: "A Theory of Prompt Injection" — role confusion explains why attacks work</div>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- My Work Column -->
+      <div class="column mywork">
+        <div class="column-header">
+          <div class="column-emoji">👩‍💻</div>
+          <h2 class="column-title">What I've Been Up To</h2>
+        </div>
+        <div class="items">
+          <div class="item">
+            <div class="item-text">🎓 Ran 4-hour MCP workshop: Using &amp; building MCP servers with GitHub Copilot</div>
+            
+          </div>
+          <div class="item">
+            <div class="item-text">📢 Announced Microsoft IQ Deep Dive with Python series (July 28–30)</div>
+            
+          </div>
+          <div class="item">
+            <div class="item-text">🎙 Experimented with "In the Weights" website</div>
+            
+          </div>
+          <div class="item">
+            <div class="item-text">🛠 Prepare model-swap-workshop for AIE WF</div>
+            
+          </div>
+          <div class="item">
+            <div class="item-text">📊 Add grouped eval summaries to RAG app</div>
+            
+          </div>
+        </div>
+        <div class="events-subsection">
+          <h3 class="events-subtitle">📅 Upcoming Events</h3>
+          <table class="events-table">
+            <thead>
+              <tr><th>Date</th><th>Event</th><th>Location</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Jul 8–10</td><td>AI Engineer World's Fair</td><td>San Francisco, CA</td></tr>
+              <tr><td>Jul 28–30</td><td>Microsoft IQ Deep Dive: Python series</td><td>Online</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>🔄 Updated: June 23, 2026 • News from June 17–23</p>
+    </div>
+  </div>
+</body>
+</html>
