@@ -59,6 +59,7 @@ Run **all four** data sources in parallel:
   - `from:pytorchevents@linuxfoundation.org` (Outlook)
   - `from:noreply@email.openai.com` (OpenAI product updates in Outlook)
   - `from:github-copilot-insiders@microsoft.com` (GitHub Copilot insiders updates in Outlook)
+  - `to:developertools-mvp-nda@mstechdiscussions.com` (Developer Tools MVP NDA emails in Outlook)
 - Look for announcements, migration notices, new releases, blog posts, and
   notable discussions.
 

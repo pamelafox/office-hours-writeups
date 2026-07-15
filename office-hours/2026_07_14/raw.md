@@ -2,6 +2,8 @@
 
 ## Recording
 
+https://www.youtube.com/watch?v=Bvlb_LD7orA
+
 ## Slide content:
 
 ### 🏢 Microsoft / GitHub

@@ -36,6 +36,17 @@ Answer to follow-up question 1a.
 
 Answer to question 2.
 
+## Generating the Python + AI Office Hours weekly news roundup
+
+Use the `python-ai-office-hours` skill when asked to prepare the weekly Python + AI Office Hours news roundup, slide deck, or browser preview. Follow `.agents/skills/python-ai-office-hours/SKILL.md` as the source of truth for gathering and categorizing news from Gmail, WorkIQ/Outlook, Twitter/X, GitHub, and the web.
+
+The skill can produce either or both of these outputs:
+
+* A single-slide widescreen PPTX with Microsoft/GitHub, Industry, and "What I've Been Up To" columns.
+* A self-contained HTML webpage for a full-screen browser preview.
+
+Run every required source search, restrict results to the date range specified by the skill, verify links and attribution, and include upcoming events in the "What I've Been Up To" column.
+
 ## Posting to the Discussions thread
 
 When asked by the user, you can post each Q&A as a comment to the GitHub Discussion thread using the discussion-commenter skill:
