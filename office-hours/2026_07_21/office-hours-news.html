@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Python + AI Office Hours - July 20, 2026</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .page {
+      width: min(1800px, 100%);
+      margin: 0 auto;
+      padding: 20px 28px 32px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      padding: 4px 4px 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .subtitle {
+      margin: 8px 0 0;
+      color: var(--cp-text-muted);
+      font-size: 1.15rem;
+    }
+
+    .range {
+      flex: none;
+      color: var(--cp-text-soft);
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .column {
+      min-width: 0;
+      overflow: hidden;
+      background: var(--cp-bg-elevated);
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+      box-shadow: 0 1px 2px var(--cp-border);
+    }
+
+    .column-header {
+      padding: 20px 20px 16px;
+      border-bottom: 4px solid var(--section-color);
+    }
+
+    .column-header h2 {
+      margin: 0;
+      color: var(--section-color);
+      font-size: 1.35rem;
+      line-height: 1.2;
+    }
+
+    .column-header p {
+      margin: 8px 0 0;
+      color: var(--cp-text-muted);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .ms {
+      --section-color: var(--cp-accent);
+    }
+
+    .industry {
+      --section-color: var(--cp-success);
+    }
+
+    .work {
+      --section-color: var(--cp-link);
+    }
+
+    .items {
+      display: grid;
+      gap: 12px;
+      padding: 16px;
+    }
+
+    .item {
+      padding: 16px;
+      background: var(--cp-surface);
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+      box-shadow: 0 1px 2px var(--cp-border);
+      transition: transform 160ms ease, border-color 160ms ease;
+    }
+
+    .item:hover {
+      transform: translateY(-2px);
+      border-color: var(--cp-border-strong);
+    }
+
+    .item h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+
+    .item p {
+      margin: 0 0 12px;
+      color: var(--cp-text-muted);
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+
+    a {
+      color: var(--cp-link);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    .source {
+      display: inline-block;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+      font-size: 0.78rem;
+      font-weight: 650;
+    }
+
+    .events {
+      margin: 4px 16px 20px;
+      padding-top: 20px;
+      border-top: 2px solid var(--cp-border);
+    }
+
+    .events h3 {
+      margin: 0 0 12px;
+      color: var(--section-color);
+      font-size: 1.05rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.79rem;
+    }
+
+    th,
+    td {
+      padding: 9px 7px;
+      border-bottom: 1px solid var(--cp-border);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--cp-text-muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    footer {
+      padding: 24px 4px 4px;
+      color: var(--cp-text-soft);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    @media (max-width: 1100px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .range {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        padding: 18px;
+      }
+
+      .items {
+        padding: 12px;
+      }
+
+      .item {
+        padding: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div>
+        <h1>🐍 Python + AI Office Hours</h1>
+        <p class="subtitle">Weekly News Roundup — July 20, 2026</p>
+      </div>
+      <div class="range">7-day scan<br>July 14–21, 2026</div>
+    </header>
+
+    <section class="grid" aria-label="Weekly news categories">
+      <article class="column ms">
+        <div class="column-header">
+          <h2>🏢 Microsoft / GitHub</h2>
+          <p>Copilot models, code quality, metrics, review, and interactive experiences.</p>
+        </div>
+        <div class="items">
+          <article class="item">
+            <h3>Gemini 3.6 Flash arrives in GitHub Copilot</h3>
+            <p>The fast, efficient Gemini model is now available across Copilot surfaces.</p>
+            <a class="source" href="https://github.blog/changelog/2026-07-21-gemini-3-6-flash-is-now-available-in-github-copilot">GitHub Changelog →</a>
+          </article>
+          <article class="item">
+            <h3>GitHub Code Quality is generally available</h3>
+            <p>Code scanning gains actionable maintainability findings alongside security results.</p>
+            <a class="source" href="https://github.blog/changelog/2026-07-20-github-code-quality-is-now-generally-available">GitHub Changelog →</a>
+          </article>
+          <article class="item">
+            <h3>Repository-level Copilot usage metrics are GA</h3>
+            <p>Organizations can evaluate Copilot adoption and engagement at repository level.</p>
+            <a class="source" href="https://github.blog/changelog/2026-07-17-repository-level-github-copilot-usage-metrics-generally-available">GitHub Changelog →</a>
+          </article>
+          <article class="item">
+            <h3>Copilot app usage lands in the metrics API</h3>
+            <p>The API now exposes activity from the Copilot app alongside other surfaces.</p>
+            <a class="source" href="https://github.blog/changelog/2026-07-17-github-copilot-app-now-available-in-the-usage-metrics-api">GitHub Changelog →</a>
+          </article>
+          <article class="item">
+            <h3>Copilot code review adds deeper customization</h3>
+            <p>New controls cover review behavior, firewall access, and repository setup.</p>
+            <a class="source" href="https://github.blog/changelog/2026-07-17-copilot-code-review-customization-and-configurability-improvements">GitHub Changelog →</a>
+          </article>
+          <article class="item">
+            <h3>Build interactive experiences with canvases</h3>
+            <p>Copilot canvases can turn generated results into rich, task-specific interfaces.</p>
+            <a class="source" href="https://github.blog/ai-and-ml/github-copilot/how-to-build-interactive-experiences-with-canvases/">GitHub Blog →</a>
+          </article>
+          <article class="item">
+            <h3>AI changes the cost of saying “yes” to ideas</h3>
+            <p>GitHub explores how inexpensive experimentation reshapes engineering decisions.</p>
+            <a class="source" href="https://github.blog/engineering/the-cost-of-saying-yes-has-changed/">GitHub Engineering →</a>
+          </article>
+        </div>
+      </article>
+
+      <article class="column industry">
+        <div class="column-header">
+          <h2>🌐 Industry</h2>
+          <p>Models, agent workflows, sandboxes, research, and Python MCP tooling.</p>
+        </div>
+        <div class="items">
+          <article class="item">
+            <h3>OpenAI launches GPT-5.6 for API and Codex</h3>
+            <p>The new family targets harder coding and agentic work with improved efficiency.</p>
+            <a class="source" href="https://openai.com/index/gpt-5-6/">OpenAI →</a>
+          </article>
+          <article class="item">
+            <h3>ChatGPT Work tackles multi-step workflows</h3>
+            <p>Work operates across connected apps and files to produce finished materials.</p>
+            <a class="source" href="https://openai.com/chatgpt-work/">OpenAI →</a>
+          </article>
+          <article class="item">
+            <h3>Visualizing what Gemma 4 “thinks” while watching video</h3>
+            <p>Matt Henderson samples the model’s next-token predictions over raw image patches.</p>
+            <a class="source" href="https://x.com/matthen2/status/2078818110597972114">View on X →</a>
+          </article>
+          <article class="item">
+            <h3>Pydantic shares a five-part agents week</h3>
+            <p>The series focuses on shipping the right agents and learning from production traces.</p>
+            <a class="source" href="https://pydantic.dev/articles/agents-week">Pydantic →</a>
+          </article>
+          <article class="item">
+            <h3>Pydantic previews traced Python sandboxes</h3>
+            <p>Logfire aims to provide one interface for running Python across sandbox providers.</p>
+            <a class="source" href="https://pydantic.dev/articles/logfire-sandboxes">Pydantic →</a>
+          </article>
+          <article class="item">
+            <h3>Grok CLI caught uploading whole repositories</h3>
+            <p>Researchers found repository contents, history, and secrets sent to cloud storage.</p>
+            <a class="source" href="https://newsletter.pragmaticengineer.com/p/the-pulse-groks-cli-caught-uploading">The Pragmatic Engineer →</a>
+          </article>
+          <article class="item">
+            <h3>SearchOS-V1 coordinates search agents</h3>
+            <p>The research schedules specialized agents for robust open-domain information seeking.</p>
+            <a class="source" href="https://arxiv.org/abs/2607.15257">arXiv →</a>
+          </article>
+          <article class="item">
+            <h3>Research warns of pretraining-data poisoning</h3>
+            <p>Computational propaganda can influence future models through their training corpora.</p>
+            <a class="source" href="https://arxiv.org/abs/2607.15267">arXiv →</a>
+          </article>
+        </div>
+      </article>
+
+      <article class="column work">
+        <div class="column-header">
+          <h2>👩‍💻 What I’ve Been Up To</h2>
+          <p>New MCP guidance, agent experiments, sample releases, and upcoming sessions.</p>
+        </div>
+        <div class="items">
+          <article class="item">
+            <h3>Published: Images and interactive apps from MCP</h3>
+            <p>A guide to returning visual content and app interfaces instead of only text.</p>
+            <a class="source" href="https://techcommunity.microsoft.com/blog/AzureDevCommunityBlog/beyond-text-returning-images-and-interactive-apps-from-mcp-servers/4535865">Microsoft Community Hub →</a>
+          </article>
+          <article class="item">
+            <h3>Built a Playwright nanny-family finder agent</h3>
+            <p>The agent combines browser automation and structured output to match postings.</p>
+            <span class="source">Private repository</span>
+          </article>
+          <article class="item">
+            <h3>Prepared the Microsoft IQ with Python series</h3>
+            <p>A three-day online deep dive into building Microsoft IQ experiences in Python.</p>
+            <a class="source" href="https://aka.ms/IQDeepDivePython/series">Series page →</a>
+          </article>
+          <article class="item">
+            <h3>Generating synthetic data with Foundry</h3>
+            <p>Exploring preview tools for creating synthetic datasets for cloud evaluations.</p>
+            <a class="source" href="https://learn.microsoft.com/en-us/azure/foundry/how-to/develop/cloud-evaluation?tabs=python#synthetic-data-evaluation-preview">Microsoft Learn →</a>
+          </article>
+          <article class="item">
+            <h3>Released GPT-5.4 agentic retrieval updates</h3>
+            <p>The RAG sample improves retrieval latency and cloud-ingestion compatibility.</p>
+            <a class="source" href="https://github.com/Azure-Samples/azure-search-openai-demo/releases/tag/2026-0717">Release notes →</a>
+          </article>
+        </div>
+
+        <section class="events" aria-labelledby="events-title">
+          <h3 id="events-title">📅 Upcoming Events</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Event</th>
+                <th>Location</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Weekly, Tuesdays</td>
+                <td><a href="https://aka.ms/pythonai/oh/links">Python + AI Office Hours</a></td>
+                <td>Online</td>
+              </tr>
+              <tr>
+                <td>July 28–30</td>
+                <td><a href="https://aka.ms/IQDeepDivePython/series">Microsoft IQ with Python</a></td>
+                <td>Online</td>
+              </tr>
+              <tr>
+                <td>September 8</td>
+                <td><a href="https://techcommunity.microsoft.com/blog/azuredevcommunityblog/join-us-for-our-mcp-live-%E2%80%94-a-free-livestream-covering-all-things-mcp/4537980">MCP Live!</a></td>
+                <td>Online</td>
+              </tr>
+              <tr>
+                <td>September 14</td>
+                <td><a href="https://globalai.community/e/bay9vh24">MCP Connect</a></td>
+                <td>San Francisco</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </article>
+    </section>
+
+    <footer>Prepared for Python + AI Office Hours · Sources scanned July 14–21, 2026</footer>
+  </main>
+</body>
+</html>
