@@ -1,125 +1,23 @@
-# Discord office hours write-ups: Instructions for coding agents
+# Python + AI Office Hours: Instructions for coding agents
 
-The goal of this repo is to turn the recordings of weekly Discord office hours into a text format that is easy to read and search. Each week, we will have a new markdown file in this repo that contains the write-up for that week's office hours.
+This repo supports two parts of the weekly Python + AI Office Hours workflow:
 
-## Generating the write-up
+1. **Before office hours:** Prepare the weekly news roundup used during the session.
+2. **After office hours:** Turn the recording into an easy-to-read, searchable Q&A write-up and related publishing content.
 
-When generating the write-up, follow these steps:
+## Before office hours: Generate the weekly news roundup
 
-* Use the youtube-transcript skill to fetch the transcript of the YouTube video for that week's office hours. Make sure to include timestamps. Store in transcript.md.
-* Use the youtube-live-chat skill to fetch the live chat from the YouTube video. This can provide additional context like links shared in chat. Store in live_chat.md.
-* Identify the main questions and answers
-* Generate a markdown file at "office-hours/YYYY_MM_DD/questions_answers.md" with each question as a header (##) and the corresponding answer below it. If there are follow-up questions, use sub-headers (###) for those. Do not include the "upcoming events" as a section in the write-up. For announcements that do not correspond to user questions, create a separate section at the end of the write-up with the header "Announcements".
-* Include a timestamp link below each heading, linking to that point in the YouTube video.
+Use the `generate-weekly-news-roundup` skill when asked to prepare the weekly Python + AI Office Hours news roundup webpage or browser preview. Follow `.agents/skills/generate-weekly-news-roundup/SKILL.md` as the source of truth for gathering and categorizing news from Gmail, WorkIQ/Outlook, Twitter/X, GitHub, and the web.
 
-For example:
-
-## Question 1?
-
-📹 [12:34](https://youtube.com/watch?v=VIDEO_ID&t=754)
-
-Answer to question 1. Use [inline links](https://example.com) in the answer text when there's a natural word or phrase to link (e.g., linking "custom evaluators" to the docs page about custom evaluators). Only include a separate "Links shared" section for links that don't have an obvious inline anchor in the text.
-
-Links shared:
-
-* [Link 1](https://example.com)
-
-### Follow-up question 1a?
-
-📹 [15:20](https://youtube.com/watch?v=VIDEO_ID&t=920)
-
-Answer to follow-up question 1a.
-
-## Question 2?
-
-📹 [18:45](https://youtube.com/watch?v=VIDEO_ID&t=1125)
-
-Answer to question 2.
-
-## Generating the Python + AI Office Hours weekly news roundup
-
-Use the `python-ai-office-hours` skill when asked to prepare the weekly Python + AI Office Hours news roundup, slide deck, or browser preview. Follow `.agents/skills/python-ai-office-hours/SKILL.md` as the source of truth for gathering and categorizing news from Gmail, WorkIQ/Outlook, Twitter/X, GitHub, and the web.
-
-The skill can produce either or both of these outputs:
-
-* A single-slide widescreen PPTX with Microsoft/GitHub, Industry, and "What I've Been Up To" columns.
-* A self-contained HTML webpage for a full-screen browser preview.
+The skill produces a self-contained HTML webpage with Microsoft/GitHub, Industry, and "What I've Been Up To" columns for a full-screen browser presentation.
 
 Run every required source search, restrict results to the date range specified by the skill, verify links and attribution, and include upcoming events in the "What I've Been Up To" column.
 
-## Posting to the Discussions thread
+## After office hours: Generate and publish the write-up
 
-When asked by the user, you can post each Q&A as a comment to the GitHub Discussion thread using the discussion-commenter skill:
+Each week has a directory under `office-hours/YYYY_MM_DD/` containing the recording-derived artifacts for that session.
 
-```bash
-uv run .github/skills/discussion-commenter/post_qas.py \
-  "office-hours/YYYY_MM_DD/questions_answers.md" \
-  "https://github.com/orgs/microsoft-foundry/discussions/280" \
-  "YYYY/MM/DD"
-```
-
-Each `##` section becomes a separate comment, prefixed with the date and question title (e.g., "**2026/01/06: How do you set up Entra OBO?**").
-
-## Generating the YouTube description
-
-When asked to generate a YouTube description, create a `youtube_description.md` with:
-
-1. A brief intro line
-2. A link to the discussion thread
-3. Timestamps for each question (YouTube auto-links timestamps that appear at the start of a line in `MM:SS` or `H:MM:SS` format)
-
-For example:
-
-```text
-Weekly Python + AI office hours - January 6, 2026
-
-This is just a recording from the Discord office hours, for those who couldn't attend live.
-Join the live weekly OH here: http://aka.ms/pythonai/oh
-
-See a write-up of each weekly office hours here:
-https://aka.ms/pythonai/oh/links
-
-Timestamps:
-0:00 Intro
-5:48 How do you set up Entra OBO flow for Python MCP servers?
-20:24 Which MCP inspector should I use for testing servers with Entra authentication?
-28:04 How do you track LLM usage tokens and costs?
-30:32 How do you keep yourself updated with all the new changes related to AI?
-36:30 How do you build a Microsoft Copilot agent in Python?
-46:39 How do I learn about AI from scratch as a backend developer?
-49:50 What's new with the RAG demo after SharePoint was added?
-53:53 Will companies create internal MCP servers?
-```
-
-Note: YouTube automatically makes timestamps clickable when they appear at the start of a line. Do not include the `📹` emoji or markdown links in the YouTube description.
-
-## Generating a LinkedIn post
-
-When asked to generate a LinkedIn post, create a summary with:
-
-1. An intro line with emoji
-2. A "Topics we covered" section with emoji bullets and topic headers followed by colons
-3. A news section if there were announcements
-4. A link to the discussion thread (not the YouTube recording directly)
-5. Relevant hashtags
-
-Do NOT use Unicode bold characters (𝗮𝗯𝗰𝗱𝗲𝗳𝗴...) as they are inaccessible. Use plain text with spacing and colons instead.
-
-For example:
-
-```text
-🐍 This week's Python + AI Office Hours was packed with great questions!
-
-Topics we covered:
-
-🎧 Podcast recommendations: description here
-
-📚 The tutorial trap: How to move from watching to building
-
-Join us live every week: http://aka.ms/pythonai/oh
-
-See the recording and questions here:
-https://github.com/orgs/microsoft-foundry/discussions/280
-
-#Python #AI #GenerativeAI
-```
+* Use the `generate-writeup` skill to create a structured Q&A write-up from the office hours recording.
+* Use the `generate-youtube-description` skill to create a YouTube description and timestamp chapters from the Q&A write-up.
+* Use the `generate-linkedin-post` skill to create a LinkedIn recap from the Q&A write-up.
+* Use the `post-comments` skill to publish each Q&A to the GitHub Discussion and create `comments.md`.

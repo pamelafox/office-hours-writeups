@@ -94,4 +94,4 @@ The demo showed how a notebook can turn a collection of videos and other sources
 
 📹 [49:50](https://youtube.com/watch?v=bsYGU6iWE4c&t=2990)
 
-The [Python + AI Office Hours news-generation skill](https://github.com/pamelafox/office-hours-writeups/blob/main/.agents/skills/python-ai-office-hours/SKILL.md) is also now published in the write-ups repository. It contains the workflow used to gather and generate the weekly news page and is updated as the desired output evolves.
+The [Python + AI Office Hours news-generation skill](https://github.com/pamelafox/office-hours-writeups/blob/main/.agents/skills/generate-weekly-news-roundup/SKILL.md) is also now published in the write-ups repository. It contains the workflow used to gather and generate the weekly news page and is updated as the desired output evolves.

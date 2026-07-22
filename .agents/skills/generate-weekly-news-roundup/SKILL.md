@@ -1,20 +1,19 @@
 ---
-name: python-ai-office-hours
+name: generate-weekly-news-roundup
 description: >
-  Generate a weekly PPTX slide deck for Python+AI Office Hours.
+  Generate a weekly news roundup webpage for Python+AI Office Hours.
   Searches Gmail emails, WorkIQ chats, tweets, and GitHub activity from the past 7 days,
   categorizes news into Microsoft/GitHub vs Industry vs My Work, and produces
-  a single-slide widescreen presentation with color-coded columns.
-  Can also generate a full-screen HTML webpage version for browser preview.
+  a full-screen HTML webpage with color-coded columns for browser presentation.
 allowed-tools:
   - shell
 ---
 
-# Python + AI Office Hours — Weekly Slide Generator
+# Python + AI Office Hours — Weekly News Roundup Generator
 
 You are helping **Pamela Fox** prepare her weekly **Python + AI Office Hours**.
 Your job is to gather the past week's news, categorize it, and generate a
-single-slide PPTX summarizing everything.
+self-contained HTML webpage summarizing everything.
 
 ## Step 1 — Gather news from the past 7 days
 
@@ -175,51 +174,14 @@ Sort every newsworthy item into exactly one of three buckets:
 - **Every bullet MUST have a link.** Use `web_search` to find an authoritative
   URL (blog post, repo, docs page, announcement) for each item. Do not leave
   any bullet without a link unless no relevant URL exists after searching.
-- In the PPT, links must be real clickable hyperlinks (not plain text only).
-  Use the slide generator so each URL run has a hyperlink target set.
 - Drop items that aren't relevant to a Python/AI developer audience.
 - Drop purely personal/social content — keep it professional and technical.
 
-## Step 3 — Generate the PPTX
+## Step 3 — Generate the HTML webpage
 
-Use the template script at `.agents/skills/python-ai-office-hours/generate_slides_template.py`
-as a starting point. Copy it to a working file (e.g., `generate_slides.py`) and:
-
-1. **Set the date** — replace the placeholder date with the current Monday's date
-   (format: `Month Day, Year`, e.g., `April 7, 2026`).
-2. **Fill in content** — replace the example bullets in each column with the
-   categorized items from Step 2. Use the `bullet(tf, "text", "optional-url")` helper.
-3. **Adjust column counts** — if one column has significantly more items, you can
-   tweak font sizes slightly (±1pt) or add/remove spacer lines, but keep the
-   overall layout consistent.
-
-### Running the script
-
-```bash
-# Ensure python-pptx is installed
-pip install python-pptx
-
-# Generate the presentation
-python generate_slides.py
-```
-
-The output file will be named `office-hours-YYYY-MM-DD.pptx`.
-
-## Slide format rules (do not change)
-
-- **Single slide** — everything fits on one widescreen (16:9) slide
-- **Light mode** — white background (`#FFFFFF`)
-- **Three columns** — left (MS/GitHub), middle (Industry), right (My Work)
-- **Color-coded section headers** — purple, green, blue respectively
-- **Font sizes**: title 22pt, section headers 16pt, bullets 13pt, links 10pt
-- **Title format**: `🐍 Python + AI Office Hours — Weekly News Roundup — {date}`
-
-## Step 3b — Generate an HTML webpage (alternative/additional output)
-
-Instead of (or in addition to) the PPTX, generate a full-screen HTML webpage.
-Each week's output goes in a date-named folder: `YYYY-MM-DD/office-hours-news.html`
-(e.g., `2026-06-23/office-hours-news.html`). This is the **preferred output format**
-when the user asks for a "webpage" or wants to preview in a browser.
+Generate a full-screen, self-contained HTML webpage at
+`office-hours/YYYY_MM_DD/office-hours-news.html` (for example,
+`office-hours/2026_06_23/office-hours-news.html`).
 
 ### HTML structure
 
@@ -258,7 +220,7 @@ Then open the browser canvas:
 open_canvas(
   title="Office Hours News",
   type="browser",
-  url="http://localhost:8765/python-ai-office-hours/YYYY-MM-DD/office-hours-news.html"
+  url="http://localhost:8765/office-hours-writeups/office-hours/YYYY_MM_DD/office-hours-news.html"
 )
 ```
 
@@ -277,13 +239,13 @@ opening the canvas.
   most of the content. If `gmail-get_thread` returns an error, try fetching the
   public web version of the newsletter (e.g. `globalai.community/weekly/NNN/`,
   or search `site:newsletter.pragmaticengineer.com` for the issue title).
-- Always verify the generated PPTX exists and report the file path to the user.
-- For the HTML webpage, always verify the server is running before opening the
-  browser canvas. Use `curl -s http://localhost:8765/... | wc -l` to confirm.
+- Always verify the generated HTML file exists and the server is running before
+  opening the browser canvas. Use `curl -s http://localhost:8765/... | wc -l`
+  to confirm.
 
 ## Step 4 — Output summary tables
 
-After generating the slide/webpage, output two markdown tables in your response:
+After generating the webpage, output two markdown tables in your response:
 
 ### Data Sources Summary
 
