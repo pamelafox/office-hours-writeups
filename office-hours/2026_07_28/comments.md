@@ -1,0 +1,18 @@
+# Comments posted to discussion
+
+* [Can we talk about data privacy, like anonymization and keeping PII out of the LLM?](#discussioncomment-17823071)
+* [What guards exist against indirect prompt injection?](#discussioncomment-17823072)
+* [Are knowledge sources and the services that touch the data located in our tenant, or can we control the country/region?](#discussioncomment-17823074)
+* [Should I add my relational database or my raw files as the data source for a document chat experience?](#discussioncomment-17823075)
+* [Does Foundry IQ handle ASPX-based SharePoint content well?](#discussioncomment-17823076)
+* [Are RAG data permissions checked at query time, or cached? If someone is removed from an Entra group, is there a delay?](#discussioncomment-17823077)
+* [If we add Work IQ as a knowledge source, what does that cost on top of Work IQ itself?](#discussioncomment-17823079)
+* [Do you have experience with Dataverse and using FetchXML or OData queries to connect to models?](#discussioncomment-17823080)
+* [What role do knowledge graphs and ontologies play in retrieving knowledge or reasoning in Foundry IQ?](#discussioncomment-17823081)
+* [How do I filter documents indexed in AI Search based on user roles?](#discussioncomment-17823082)
+* [Can the built-in tool that Foundry agents use to connect to an AI Search index return custom fields from that index?](#discussioncomment-17823083)
+* [Is there a decision tree for when to stay inside M365 and Copilot Studio versus going to Foundry?](#discussioncomment-17823084)
+* [If information lives in Work IQ, are the retrieval methods different from retrieving through Foundry IQ?](#discussioncomment-17823085)
+* [Where is the right boundary between Foundry IQ for grounded knowledge and your own application for tenant isolation, permissions, and action approvals?](#discussioncomment-17823086)
+* [Announcement: MCP 2.0 ships today](#discussioncomment-17823087)
+* [Demo: publishing a Foundry hosted agent to Teams](#discussioncomment-17823089)
