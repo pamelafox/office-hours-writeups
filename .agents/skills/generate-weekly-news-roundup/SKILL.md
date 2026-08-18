@@ -17,7 +17,7 @@ self-contained HTML webpage summarizing everything.
 
 ## Step 1 — Gather news from the past 7 days
 
-Run **all four** data sources in parallel:
+Run all independent data-source groups in parallel:
 
 ### 1a. Gmail (recent emails)
 - Use the Gmail MCP server to find recent emails from the past 7 days.
@@ -141,15 +141,28 @@ returns only Pamela's own tweets and is far less likely to need pagination.
   operational reports unless directly relevant to developers.
 - Link bullets to the canonical blog post, not the RSS feed URL.
 
-### 1g. Pamela's talks page
+### 1g. Microsoft Developer Changelog
+- Fetch the unified Microsoft Developer Changelog RSS feed at
+  `https://developer.microsoft.com/api/changelog/rss`.
+- Parse every feed item published during the past 7 days. Prioritize updates
+  relevant to Python and AI developers, including Foundry, Azure AI, agents,
+  developer tools, VS Code, databases, and open-source development environments.
+- Drop routine infrastructure, lifecycle, healthcare, and administrative notices
+  unless they materially affect the intended audience.
+- Prefer the direct canonical announcement, documentation, or blog URL over an
+  `azure.microsoft.com/updates?id=...` redirect when a direct link is available.
+
+### 1h. Pamela's talks page
 - Fetch `https://pamelafox.org/talks` to verify talk titles, dates, and URLs.
   Use this as the source of truth for any conference talks attributed to Pamela
   in the "What I've Been Up To" column — do NOT rely on tweet text alone, as
   the home timeline may contain other speakers' talks from the same conference.
 
-### 1h. Upcoming Events
+### 1i. Upcoming Events
 - Fetch Pamela's GitHub profile page at `https://github.com/pamelafox` and look
   for upcoming events listed there (conference talks, livestreams, meetups, etc.).
+- If the profile page is blocked or incomplete, fetch `README.md` from the
+  `pamelafox/pamelafox` repository's `main` branch with the GitHub API.
 - Treat events listed on `github.com/pamelafox` as a required source of truth:
   include all relevant future professional events found there unless clearly canceled
   or outside the intended audience.
@@ -192,6 +205,8 @@ Use a self-contained single HTML file with:
 - **Each item** is a card with the news text + a clickable hyperlink underneath
 - **Upcoming Events** — a table (Date | Event | Location) inside the My Work column,
   separated by a border-top divider
+- Keep the Upcoming Events table readable in presentation mode: use at least
+  `0.875rem` text, at least `1.125rem` for its heading, and comfortable cell padding.
 - **Title**: `🐍 Python + AI Office Hours` with subtitle `Weekly News Roundup — {date}`
 - **Footer** with the date range covered
 
@@ -242,6 +257,9 @@ opening the canvas.
 - Always verify the generated HTML file exists and the server is running before
   opening the browser canvas. Use `curl -s http://localhost:8765/... | wc -l`
   to confirm.
+- Before finishing, count the rendered `.item` cards in each column and the rows
+  in Upcoming Events. Ensure every displayed count and the Sections Summary
+  matches the final HTML after all additions and removals.
 
 ## Step 4 — Output summary tables
 
@@ -260,6 +278,7 @@ After generating the webpage, output two markdown tables in your response:
 | GitHub events | ✅ Success | 3 repos with activity |
 | GitHub Changelog RSS | ✅ Success | 10 posts, 4 relevant |
 | GitHub Blog RSS | ✅ Success | 5 posts, 2 relevant |
+| Microsoft Developer Changelog RSS | ✅ Success | 12 posts, 3 relevant |
 | pamelafox.org/talks | ✅ Success | Verified talk titles |
 | github.com/pamelafox | ❌ Error | Rate limited / blocked |
 
