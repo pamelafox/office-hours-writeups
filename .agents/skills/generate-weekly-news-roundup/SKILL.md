@@ -158,7 +158,20 @@ returns only Pamela's own tweets and is far less likely to need pagination.
   in the "What I've Been Up To" column — do NOT rely on tweet text alone, as
   the home timeline may contain other speakers' talks from the same conference.
 
-### 1i. Upcoming Events
+### 1i. Microsoft Agent Framework releases
+- Fetch `https://github.com/microsoft/agent-framework/releases` or query the
+  GitHub releases API for `microsoft/agent-framework`.
+- Review every release published during the past 7 days.
+- Prioritize Python releases (`python-*` tags) and extract notable additions,
+  breaking changes, production-readiness improvements, new integrations,
+  orchestration or workflow capabilities, agent hosting features, and important
+  fixes relevant to Python/AI developers.
+- Include .NET releases only when they introduce broadly relevant Agent
+  Framework capabilities that are not represented in the Python release.
+- Link roundup items to the canonical GitHub release page, not the releases
+  index or an individual pull request.
+
+### 1j. Upcoming Events
 - Fetch Pamela's GitHub profile page at `https://github.com/pamelafox` and look
   for upcoming events listed there (conference talks, livestreams, meetups, etc.).
 - If the profile page is blocked or incomplete, fetch `README.md` from the
@@ -279,6 +292,7 @@ After generating the webpage, output two markdown tables in your response:
 | GitHub Changelog RSS | ✅ Success | 10 posts, 4 relevant |
 | GitHub Blog RSS | ✅ Success | 5 posts, 2 relevant |
 | Microsoft Developer Changelog RSS | ✅ Success | 12 posts, 3 relevant |
+| Microsoft Agent Framework releases | ✅ Success | Python 1.15.0 reviewed |
 | pamelafox.org/talks | ✅ Success | Verified talk titles |
 | github.com/pamelafox | ❌ Error | Rate limited / blocked |
 

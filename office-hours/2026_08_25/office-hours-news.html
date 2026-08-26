@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Python + AI Office Hours — August 25, 2026</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { min-height: 100%; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    a { color: inherit; }
+    .page {
+      width: min(1800px, 100%);
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(1.75rem, 3vw, 3rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+    .subtitle {
+      margin: 8px 0 0;
+      color: var(--cp-text-muted);
+      font-size: 1.05rem;
+    }
+    .range {
+      flex: 0 0 auto;
+      padding: 8px 12px;
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+      background: var(--cp-surface);
+      color: var(--cp-text-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .column {
+      overflow: hidden;
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+      background: var(--cp-bg-elevated);
+      box-shadow: 0 0 2px var(--cp-border), 0 1px 2px var(--cp-border);
+    }
+    .column-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 15px 16px;
+      border-bottom: 3px solid var(--section-color);
+      background: var(--cp-surface);
+    }
+    .column h2 {
+      margin: 0;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+    .count {
+      min-width: 28px;
+      padding: 3px 8px;
+      border-radius: 0.625rem;
+      background: var(--cp-surface-soft);
+      color: var(--cp-text-muted);
+      text-align: center;
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+    .items {
+      display: grid;
+      gap: 9px;
+      padding: 10px;
+    }
+    .item {
+      display: block;
+      padding: 11px 12px;
+      border: 1px solid var(--cp-border);
+      border-left: 4px solid var(--section-color);
+      border-radius: 16px;
+      background: var(--cp-surface);
+      color: var(--cp-text);
+      text-decoration: none;
+      box-shadow: 0 0 2px var(--cp-border), 0 1px 2px var(--cp-border);
+      transition: transform 140ms ease, border-color 140ms ease;
+    }
+    .item:hover {
+      transform: translateY(-2px);
+      border-color: var(--section-color);
+    }
+    .item strong {
+      display: block;
+      font-size: 0.93rem;
+      line-height: 1.22;
+    }
+    .item span {
+      display: block;
+      margin-top: 5px;
+      color: var(--cp-text-muted);
+      font-size: 0.76rem;
+      line-height: 1.25;
+    }
+    .microsoft { --section-color: var(--cp-accent); }
+    .industry { --section-color: var(--cp-success); }
+    .work { --section-color: var(--cp-link); }
+    .events {
+      margin: 2px 10px 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--cp-border-strong);
+    }
+    .events h3 {
+      margin: 0 0 9px;
+      font-size: 1.15rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 0.625rem;
+      background: var(--cp-surface);
+      font-size: 0.88rem;
+    }
+    th, td {
+      padding: 9px 10px;
+      border: 1px solid var(--cp-border);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: var(--cp-surface-soft);
+      color: var(--cp-text-muted);
+      font-weight: 700;
+    }
+    td:first-child { white-space: nowrap; }
+    td a {
+      color: var(--cp-link);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    td a:hover { text-decoration: underline; }
+    footer {
+      margin-top: 16px;
+      color: var(--cp-text-soft);
+      text-align: center;
+      font-size: 0.75rem;
+    }
+    @media (max-width: 1100px) {
+      .grid { grid-template-columns: 1fr; }
+      header { align-items: start; flex-direction: column; }
+    }
+    @media (max-width: 600px) {
+      .page { padding: 14px; }
+      .range { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div>
+        <h1>🐍 Python + AI Office Hours</h1>
+        <p class="subtitle">Weekly News Roundup — Tuesday, August 25, 2026</p>
+      </div>
+      <div class="range">August 18–25, 2026</div>
+    </header>
+
+    <section class="grid" aria-label="Weekly news">
+      <article class="column microsoft">
+        <div class="column-header">
+          <h2>🏢 Microsoft / GitHub</h2>
+          <span class="count">7</span>
+        </div>
+        <div class="items">
+          <a class="item" href="https://github.blog/changelog/2026-08-21-the-new-github-copilot-experience-in-slack/">
+            <strong>GitHub Copilot comes to Slack in public preview</strong>
+            <span>Start cloud agent sessions from team conversations and turn discussions into pull requests</span>
+          </a>
+          <a class="item" href="https://github.blog/changelog/2026-08-21-shared-agentic-work-with-github-copilot-in-microsoft-teams/">
+            <strong>Teams adds shared GitHub Copilot agent sessions</strong>
+            <span>Channel members can collectively direct and review a coding agent’s work</span>
+          </a>
+          <a class="item" href="https://code.visualstudio.com/updates/v1_134">
+            <strong>VS Code 1.134 introduces Agent Host</strong>
+            <span>Multi-window sessions, side-by-side chats, prompt timelines, and full conversation search</span>
+          </a>
+          <a class="item" href="https://techcommunity.microsoft.com/blog/azureinfrastructureblog/azure-copilot-introduces-direct-access-to-agents/4547932">
+            <strong>Azure Copilot opens direct access to specialized agents</strong>
+            <span>Call troubleshooting, deployment, optimization, and resiliency agents from chat</span>
+          </a>
+          <a class="item" href="https://github.blog/engineering/user-experience/your-alt-text-passes-automated-checks-that-doesnt-mean-its-any-good/">
+            <strong>GitHub’s scanner checks whether alt text is actually useful</strong>
+            <span>Deterministic rules catch common mistakes, with optional model review for image context</span>
+          </a>
+          <a class="item" href="https://github.blog/changelog/2026-08-19-codeql-2-26-3-improves-github-actions-queries-and-javascript-modeling/">
+            <strong>CodeQL 2.26.3 strengthens Actions and JavaScript analysis</strong>
+            <span>New data-flow modeling improves GitHub Actions security and Vue Composition API coverage</span>
+          </a>
+          <a class="item" href="https://github.com/microsoft/agent-framework/releases/tag/python-1.15.0">
+            <strong>Microsoft Agent Framework Python 1.15 adds resilient agents</strong>
+            <span>Steering, retries, recovery, A2UI support, and a production-ready claw harness sample</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="column industry">
+        <div class="column-header">
+          <h2>🌐 Industry</h2>
+          <span class="count">7</span>
+        </div>
+        <div class="items">
+          <a class="item" href="https://openai.com/index/asana/">
+            <strong>Asana clears a five-year test migration in two weeks</strong>
+            <span>Codex agents migrated the Enzyme suite under engineer review for about $12,000</span>
+          </a>
+          <a class="item" href="https://blog.modelcontextprotocol.io/posts/2026-mcp-roadmap/">
+            <strong>MCP roadmap targets richer agent infrastructure</strong>
+            <span>Agent messaging, triggers, progressive discovery, and proof-of-possession lead the priorities</span>
+          </a>
+          <a class="item" href="https://developer.nvidia.com/blog/nvidia-avo-reaches-100-on-arc-agi-3-demonstrating-a-frontier-level-general-purpose-architecture-for-long-horizon-autonomous-agents/">
+            <strong>NVIDIA’s AVO harness reaches 100% on public ARC-AGI-3</strong>
+            <span>Persistent memory, supervision, and tool use lift the same base model far beyond its baseline</span>
+          </a>
+          <a class="item" href="https://github.com/ai-evals-course/evals-skills">
+            <strong>Evals Skills rebuilds around error discovery</strong>
+            <span>The open skills package helps teams inspect traces, name failure modes, and audit evaluations</span>
+          </a>
+          <a class="item" href="https://openai.com/index/pacing-model-development-cyber-capabilities/">
+            <strong>OpenAI slows model training over cyber-critical capabilities</strong>
+            <span>Frontier RL work pauses while monitoring, alignment, and security safeguards catch up</span>
+          </a>
+          <a class="item" href="https://arxiv.org/abs/2608.18011">
+            <strong>IOL-AI opens a challenge for linguistic reasoning</strong>
+            <span>The benchmark turns International Linguistics Olympiad puzzles into a test for AI systems</span>
+          </a>
+          <a class="item" href="https://builders.ramp.com/post/why-we-built-our-background-agent">
+            <strong>Ramp explains why it built its own coding agent</strong>
+            <span>Inspect combines repository context, parallel work, and human review for Ramp’s engineering needs</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="column work">
+        <div class="column-header">
+          <h2>👩‍💻 What I’ve Been Up To</h2>
+          <span class="count">2</span>
+        </div>
+        <div class="items">
+          <a class="item" href="https://techcommunity.microsoft.com/blog/azuredevcommunityblog/browser-automation-with-pydantic-ai--playwright/4547971">
+            <strong>Built a QA agent with Pydantic AI + Playwright</strong>
+            <span>The sample gives an agent browser tools, screenshots, JavaScript execution, and structured findings</span>
+          </a>
+          <a class="item" href="https://aitour.microsoft.com/flow/microsoft/aitour27/globallanding/page/globalhome">
+            <strong>Prepping sessions for Microsoft AI Tour 2027</strong>
+            <span>Developing new technical content and demos for the upcoming global tour</span>
+          </a>
+        </div>
+
+        <div class="events">
+          <h3>📅 Upcoming Events</h3>
+          <table>
+            <thead>
+              <tr><th>Date</th><th>Event</th><th>Location</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Weekly</td>
+                <td><a href="https://aka.ms/pythonai/oh/links">Python + AI Office Hours</a></td>
+                <td>Online</td>
+              </tr>
+              <tr>
+                <td>Sep 9</td>
+                <td><a href="https://techcommunity.microsoft.com/blog/azuredevcommunityblog/join-us-for-our-mcp-live-%E2%80%94-a-free-livestream-covering-all-things-mcp/4537980">MCP Live!</a></td>
+                <td>Online</td>
+              </tr>
+              <tr>
+                <td>Sep 14</td>
+                <td><a href="https://globalai.community/e/bay9vh24">MCP Community Connect</a></td>
+                <td>San Francisco</td>
+              </tr>
+              <tr>
+                <td>Sep 23–25</td>
+                <td><a href="https://www.wearedevelopers.com/world-congress-north-america/">WeAreDevelopers World Congress</a></td>
+                <td>San Jose</td>
+              </tr>
+              <tr>
+                <td>Sep 30</td>
+                <td><a href="https://aka.ms/CopilotDevCamp/Summit">Copilot Dev Camp Summit</a></td>
+                <td>Online</td>
+              </tr>
+              <tr>
+                <td>Sep 30</td>
+                <td><a href="https://developer.microsoft.com/reactor/events/27394/">ACA Sandboxes Livestream</a></td>
+                <td>Online</td>
+              </tr>
+              <tr>
+                <td>Oct 8</td>
+                <td><a href="https://luma.com/p6m4n0g7">Anthropic workshop</a></td>
+                <td>San Francisco</td>
+              </tr>
+              <tr>
+                <td>Oct 22–23</td>
+                <td><a href="https://events.linuxfoundation.org/agntcon-mcpcon-north-america/program/schedule/">AGNTCon + MCPCon</a></td>
+                <td>San Jose</td>
+              </tr>
+              <tr>
+                <td>Oct 28–29</td>
+                <td><a href="https://githubuniverse.com/">GitHub Universe</a></td>
+                <td>San Francisco</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <footer>News and activity from August 18 through August 25, 2026</footer>
+  </main>
+</body>
+</html>
