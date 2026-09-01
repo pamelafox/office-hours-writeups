@@ -28,11 +28,12 @@ Run all independent data-source groups in parallel:
   | Search query | Why |
   |---|---|
   | `from:noreply@email.openai.com after:YYYY/MM/DD` | OpenAI product updates (Codex, ChatGPT, API changes) |
-  | `from:"Pragmatic Engineer" after:YYYY/MM/DD` | The Pulse + deep-dives on AI/dev trends |
+  | `(from:"Pragmatic Engineer" OR from:pragmaticengineer@substack.com) after:YYYY/MM/DD` | The Pulse + deep-dives on AI/dev trends |
   | `from:"Global AI Community" after:YYYY/MM/DD` | Global AI Weekly newsletter |
   | `from:hq@globalai.community after:YYYY/MM/DD` | Global AI Weekly (alternate sender address) |
   | `from:newsletter@humanwhocodes.com after:YYYY/MM/DD` | Human Who Codes AI developer newsletter |
-  | `(AI OR Python OR OpenAI OR "Azure OpenAI" OR LLM OR GPT OR Copilot OR MCP OR Foundry) after:YYYY/MM/DD` | Catch-all for other relevant newsletters |
+  | `from:newsletters-noreply@linkedin.com subject:"Main Branch" after:YYYY/MM/DD` | Andrea Griffiths' GitHub and developer-tools newsletter |
+  | `(AI OR Python OR OpenAI OR "Azure OpenAI" OR LLM OR GPT OR Copilot OR MCP OR Foundry OR GitHub OR "GitHub Actions" OR "VS Code" OR agent OR agents) after:YYYY/MM/DD` | Catch-all for other relevant newsletters |
 
 - For **every** matching email: fetch the full thread body, not just the subject/snippet.
   Extract all announcements, releases, migration notices, and noteworthy items.
@@ -195,6 +196,10 @@ Sort every newsworthy item into exactly one of three buckets:
 | 👩‍💻 What I've Been Up To | Blue `#0D6EFD` | Pamela's own blog posts, PRs, livestreams, conference talks, samples |
 
 **Guidelines:**
+- Before selecting items, inspect at least the previous week's
+  `office-hours/*/office-hours-news.html`. Exclude stories already covered there
+  unless the current week contains a material new announcement. Compare both
+  the topic and canonical URL because headlines may differ between sources.
 - Aim for 5–8 items per column (max ~11 in Industry if it's a busy week).
 - Each item should be one concise bullet (≤ 60 chars ideally) plus a URL.
 - **Every bullet MUST have a link.** Use `web_search` to find an authoritative
