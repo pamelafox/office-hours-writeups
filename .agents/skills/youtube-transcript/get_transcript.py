@@ -7,7 +7,7 @@
 Extract transcript from a YouTube video.
 
 Usage:
-    uv run scripts/get_transcript.py <video_id_or_url> [--timestamps]
+    uv run scripts/get_transcript.py <video_id_or_url> [--timestamps] [--output FILE]
 """
 
 import sys
@@ -57,12 +57,17 @@ def main():
     parser.add_argument('video', help='YouTube video URL or video ID')
     parser.add_argument('--timestamps', '-t', action='store_true', 
                         help='Include timestamps in output')
+    parser.add_argument('--output', '-o', help='Write transcript to a file')
     args = parser.parse_args()
     
     try:
         video_id = extract_video_id(args.video)
         transcript = get_transcript(video_id, with_timestamps=args.timestamps)
-        print(transcript)
+        if args.output:
+            with open(args.output, 'w', encoding='utf-8') as output_file:
+                output_file.write(f'{transcript}\n')
+        else:
+            print(transcript)
     except Exception as e:
         print(f"Error: {e}", file=sys.stderr)
         sys.exit(1)

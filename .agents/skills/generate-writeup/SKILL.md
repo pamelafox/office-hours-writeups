@@ -19,7 +19,7 @@ If the date is not explicit, infer it only when the target date is unambiguous f
 
 1. Use the `youtube-transcript` skill to fetch the recording transcript with timestamps. Save the unmodified result as `office-hours/YYYY_MM_DD/transcript.md`.
 2. Use the `youtube-live-chat` skill to fetch the live chat. Save it as `office-hours/YYYY_MM_DD/live_chat.md`. If YouTube has no chat replay, check `raw.md` for pasted Discord chat and use that as supplemental context.
-3. Read the transcript and chat, identify the main questions and answers, and distinguish follow-up questions from new topics.
+3. Read the transcript and chat, identify the main questions and answers, distinguish follow-up questions from new topics, and identify substantive discussions, demos, and announcements that are not questions.
 4. Write `office-hours/YYYY_MM_DD/questions_answers.md` using the format below.
 5. Check that every heading has the correct timestamp link and that factual claims and shared links are grounded in the transcript or chat.
 
@@ -27,12 +27,12 @@ If the date is not explicit, infer it only when the target date is unambiguous f
 
 - Begin with a descriptive title such as `# July 21, 2026 Office Hours Q&A`.
 - Use `##` headings for main questions and `###` headings for follow-up questions.
-- Put a linked video timestamp immediately below every question or follow-up heading.
+- When a substantive segment is not a question, use a descriptive `## Discussion: ...`, `## Demo: ...`, or `## Announcement: ...` heading in the appropriate place in the session chronology. Subtopics within a discussion or demo may use descriptive `###` headings.
+- Put a linked video timestamp immediately below every `##` or `###` heading.
 - Summarize answers clearly rather than reproducing the transcript verbatim.
 - Add inline links to natural words or phrases in the answer text.
 - Add a `Links shared:` list only for links that do not have an obvious inline anchor.
 - Do not include upcoming events as a write-up section.
-- Put announcements that do not answer a user question in a final `## Announcements` section.
 - Preserve meaningful caveats, uncertainty, and distinctions from the spoken answer.
 
 ## Format
@@ -61,4 +61,22 @@ Answer to the follow-up question.
 📹 [18:45](https://youtube.com/watch?v=VIDEO_ID&t=1125)
 
 Answer to question 2.
+
+## Demo: Using a new agent tool
+
+📹 [24:10](https://youtube.com/watch?v=VIDEO_ID&t=1450)
+
+Summary of what the demo showed.
+
+## Discussion: Agent security practices
+
+📹 [31:05](https://youtube.com/watch?v=VIDEO_ID&t=1865)
+
+Summary of the discussion, including uncertainty and differing viewpoints.
+
+## Announcement: New Python release
+
+📹 [45:30](https://youtube.com/watch?v=VIDEO_ID&t=2730)
+
+Summary of the announcement.
 ```

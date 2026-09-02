@@ -21,6 +21,12 @@ With timestamps:
 uv run get_transcript.py "VIDEO_URL_OR_ID" --timestamps
 ```
 
+Output to a specific file:
+
+```bash
+uv run get_transcript.py "VIDEO_URL_OR_ID" --timestamps --output transcript.md
+```
+
 ## Defaults
 
 - **Without timestamps** (default): Plain text, one line per caption segment
