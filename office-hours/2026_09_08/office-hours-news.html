@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Python + AI Office Hours — September 8, 2026</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+      --cp-ms: #6f2da8;
+      --cp-industry: #1a7f37;
+      --cp-work: #0d6efd;
+      --cp-card-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.14);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+      --cp-ms: #c79bea;
+      --cp-industry: #72d68f;
+      --cp-work: #75afff;
+      --cp-card-shadow: 0 0 2px rgba(0, 0, 0, 0.32), 0 1px 2px rgba(0, 0, 0, 0.36);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .page { max-width: 1800px; margin: auto; padding: 24px; }
+    header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 20px;
+      padding: 0 4px 16px;
+      border-bottom: 1px solid var(--cp-border);
+    }
+    h1 { margin: 0; font-size: clamp(1.75rem, 3vw, 2.75rem); letter-spacing: -0.035em; }
+    .subtitle { margin: 6px 0 0; color: var(--cp-text-muted); font-size: 1.05rem; }
+    .range { color: var(--cp-text-muted); font-size: 0.9rem; white-space: nowrap; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; }
+    .column {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+      background: var(--cp-bg-elevated);
+      box-shadow: var(--cp-card-shadow);
+    }
+    .microsoft { --cp-column: var(--cp-ms); }
+    .industry { --cp-column: var(--cp-industry); }
+    .work { --cp-column: var(--cp-work); }
+    .column-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin: 0;
+      padding: 16px;
+      border-bottom: 4px solid var(--cp-column);
+      background: var(--cp-surface);
+      color: var(--cp-column);
+      font-size: 1.2rem;
+    }
+    .count { font-size: 0.85rem; font-weight: 500; }
+    .column-body { display: grid; gap: 10px; padding: 12px; }
+    .item {
+      padding: 12px 14px;
+      border: 1px solid var(--cp-border);
+      border-left: 4px solid var(--cp-column);
+      border-radius: 16px;
+      background: var(--cp-surface);
+      box-shadow: var(--cp-card-shadow);
+      transition: transform 160ms ease, border-color 160ms ease;
+    }
+    .item:hover { transform: translateY(-2px); border-color: var(--cp-column); }
+    .item-title { margin: 0 0 6px; font-size: 1rem; font-weight: 650; line-height: 1.3; }
+    a { color: var(--cp-link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    a:focus-visible { outline: 2px solid var(--cp-accent); outline-offset: 3px; }
+    .item a { font-size: 0.875rem; line-height: 1.4; }
+    .events { margin: 8px 4px 4px; padding-top: 16px; border-top: 2px solid var(--cp-border); }
+    .events h3 { margin: 0 0 10px; color: var(--cp-column); font-size: 1.125rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    th, td { padding: 9px 7px; border-bottom: 1px solid var(--cp-border); text-align: left; vertical-align: top; }
+    th { color: var(--cp-text-muted); font-weight: 650; }
+    td:first-child { white-space: nowrap; }
+    td a { font-weight: 600; }
+    footer { margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--cp-border); color: var(--cp-text-muted); text-align: center; font-size: 0.82rem; }
+    @media (max-width: 1050px) {
+      .grid { grid-template-columns: 1fr; }
+      header { flex-direction: column; align-items: start; gap: 12px; }
+    }
+    @media (max-width: 480px) {
+      .page { padding: 12px; }
+      th, td { padding: 9px 4px; }
+      td:first-child { white-space: normal; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .item { transition: none; }
+      .item:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div>
+        <h1>🐍 Python + AI Office Hours</h1>
+        <p class="subtitle">Weekly News Roundup — September 8, 2026</p>
+      </div>
+      <div class="range">September 1–8, 2026</div>
+    </header>
+    <section class="grid" aria-label="Weekly news">
+      <article class="column microsoft" aria-labelledby="microsoft-title">
+        <h2 class="column-header" id="microsoft-title">🏢 Microsoft / GitHub <span class="count"></span></h2>
+        <div class="column-body">
+          <div class="item" data-date="2026-09-04">
+            <p class="item-title">HydraFusion orchestrates models for coding</p>
+            <a href="https://github.blog/ai-and-ml/github-copilot/project-hydrafusion-frontier-quality-via-multi-model-orchestration/">Research preview: routing, cascades, and cross-model critique ↗</a>
+          </div>
+          <div class="item" data-date="2026-09-04">
+            <p class="item-title">GPT-6 Astra rolls out in GitHub Copilot</p>
+            <a href="https://github.blog/changelog/2026-09-04-gpt-6-astra-is-generally-available-in-github-copilot/">GA for Pro+, Max, Business, and Enterprise ↗</a>
+          </div>
+          <div class="item" data-date="2026-09-01">
+            <p class="item-title">Copilot reviews can count as PR approvals</p>
+            <a href="https://github.blog/changelog/2026-09-01-copilot-code-review-can-now-approve-pull-requests/">Opt-in preview; approval assessments alone do not count ↗</a>
+          </div>
+          <div class="item" data-date="2026-09-01">
+            <p class="item-title">GitHub CLI can attach images and videos</p>
+            <a href="https://github.blog/changelog/2026-09-01-github-cli-media-in-issues-pull-requests-and-comments/">gh 2.99 adds --attach to issue, PR, and comment commands ↗</a>
+          </div>
+          <div class="item" data-date="2026-09-03">
+            <p class="item-title">CodeQL improves Python and Actions detections</p>
+            <a href="https://github.blog/changelog/2026-09-03-codeql-2-26-4-improves-github-actions-security-detections/">Python list taint tracking and reusable-workflow checks ↗</a>
+          </div>
+          <div class="item" data-date="2026-09-02">
+            <p class="item-title">VS Code 1.136 previews Agent Merge</p>
+            <a href="https://code.visualstudio.com/updates/v1_136">Agents iterate on review feedback, failed checks, and conflicts ↗</a>
+          </div>
+          <div class="item" data-date="2026-09-03">
+            <p class="item-title">GPT-6 Astra is generally available in Foundry</p>
+            <a href="https://azure.microsoft.com/en-us/blog/gpt-6-astra-frontier-intelligence-for-work-now-generally-available-in-microsoft-foundry/">Standard and Provisioned Throughput; Global and US Data Zone ↗</a>
+          </div>
+          <div class="item" data-date="2026-09-03">
+            <p class="item-title">Agent Framework Python 1.17: check migrations</p>
+            <a href="https://github.com/microsoft/agent-framework/releases/tag/python-1.17.0">OpenAI SDK 3.x; sequence-only middleware, removed agent-hooks extra ↗</a>
+          </div>
+        </div>
+      </article>
+      <article class="column industry" aria-labelledby="industry-title">
+        <h2 class="column-header" id="industry-title">🌐 Industry <span class="count"></span></h2>
+        <div class="column-body">
+          <div class="item" data-date="2026-09-01">
+            <p class="item-title">Python 3.15 reaches its final release candidate</p>
+            <a href="https://blog.python.org/2026/09/python-3150-rc2/">Test your packages and publish wheels before October 1 ↗</a>
+          </div>
+          <div class="item" data-date="2026-09-03">
+            <p class="item-title">NVIDIA agrees to acquire Hugging Face</p>
+            <a href="https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/">Says the platform will stay open, multi-cloud, and multi-accelerator ↗</a>
+          </div>
+          <div class="item" data-date="2026-09-01">
+            <p class="item-title">Claude Fable 5.1 arrives—with migration caveats</p>
+            <a href="https://platform.claude.com/docs/en/models/fable-5-1/whats-new-fable-5-1">Cheaper cache reads; forced tool-choice modes no longer work ↗</a>
+          </div>
+          <div class="item" data-date="2026-09-03">
+            <p class="item-title">Skills-over-MCP proposal accepted</p>
+            <a href="https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2640#issuecomment-5532996112">Core maintainers accept the SEP; implementation and finalization next ↗</a>
+          </div>
+          <div class="item" data-date="2026-09-03">
+            <p class="item-title">OpenAI announces GPT-6 Astra</p>
+            <a href="https://openai.com/index/gpt-6-astra/">Frontier model for complex reasoning, coding, and computer use ↗</a>
+          </div>
+          <div class="item" data-date="2026-09-08">
+            <p class="item-title">Pydantic explores linguistic drift in AI-generated prose</p>
+            <a href="https://pydantic.dev/articles/linguistic-drift-at-the-frontier">Vocabulary feedback loops and an experimental vocabguard capability ↗</a>
+          </div>
+        </div>
+      </article>
+      <article class="column work" aria-labelledby="work-title">
+        <h2 class="column-header" id="work-title">👩‍💻 What I've Been Up To <span class="count"></span></h2>
+        <div class="column-body">
+          <div class="item" data-date="2026-09-02">
+            <p class="item-title">Added image editing to my MAI skill</p>
+            <a href="https://github.com/pamelafox/presentation-skills/pull/12">JPEG/PNG image-to-image edits in presentation-skills ↗</a>
+          </div>
+          <div class="item" data-date="2026-09-04">
+            <p class="item-title">Exploring ACA Sandboxes with Astra</p>
+            <a href="https://x.com/pamelafox/status/2096004786663612534">Experimenting with isolated compute for agents ↗</a>
+          </div>
+          <section class="events" aria-labelledby="events-title">
+            <h3 id="events-title">📅 Upcoming Events</h3>
+            <table>
+              <thead><tr><th scope="col">Date</th><th scope="col">Event</th><th scope="col">Location</th></tr></thead>
+              <tbody>
+                <tr><td>Tuesdays<br>11 AM PT</td><td><a href="https://aka.ms/pythonai/oh/links">Python + AI Office Hours</a></td><td>Online</td></tr>
+                <tr><td>Sep 9</td><td><a href="https://techcommunity.microsoft.com/blog/azuredevcommunityblog/join-us-for-our-mcp-live-%E2%80%94-a-free-livestream-covering-all-things-mcp/4537980">MCP Live!</a></td><td>Online</td></tr>
+                <tr><td>Sep 14</td><td><a href="https://globalai.community/e/bay9vh24">MCP Community Connect</a></td><td>San Francisco</td></tr>
+                <tr><td>Sep 23–25</td><td><a href="https://www.wearedevelopers.com/world-congress-north-america/">WeAreDevelopers World Congress</a></td><td>San Jose</td></tr>
+                <tr><td>Sep 30</td><td><a href="https://developer.microsoft.com/en-us/reactor/events/27402/">Copilot Dev Camp Summit</a></td><td>Online</td></tr>
+                <tr><td>Sep 30</td><td><a href="https://developer.microsoft.com/en-us/reactor/events/27394/">ACA Sandboxes Livestream</a></td><td>Online</td></tr>
+                <tr><td>Oct 8</td><td><a href="https://luma.com/p6m4n0g7">Microsoft + Anthropic workshop</a></td><td>San Francisco</td></tr>
+                <tr><td>Oct 22–23</td><td><a href="https://events.linuxfoundation.org/agntcon-mcpcon-north-america/program/schedule/">AGNTCon + MCPCon</a></td><td>San Jose</td></tr>
+                <tr><td>Oct 28–29</td><td><a href="https://githubuniverse.com/">GitHub Universe</a></td><td>San Francisco</td></tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
+      </article>
+    </section>
+    <footer>News and activity: September 1–8, 2026 · As of September 8, 10:38 AM PT · Events from Pamela's public profile</footer>
+  </main>
+  <script>
+    document.querySelectorAll(".column").forEach((column) => {
+      const count = column.querySelectorAll(".item").length;
+      column.querySelector(".count").textContent = `${count} items`;
+    });
+  </script>
+</body>
+</html>

@@ -22,6 +22,7 @@ If the date is not explicit, infer it only when the target date is unambiguous f
 3. Read the transcript and chat, identify the main questions and answers, distinguish follow-up questions from new topics, and identify substantive discussions, demos, and announcements that are not questions.
 4. Write `office-hours/YYYY_MM_DD/questions_answers.md` using the format below.
 5. Check that every heading has the correct timestamp link and that factual claims and shared links are grounded in the transcript or chat.
+6. Review for unnecessary speaker-led narration. Rewrite it as direct explanation where possible, while preserving meaningful attribution and uncertainty.
 
 ## Output Rules
 
@@ -34,6 +35,20 @@ If the date is not explicit, infer it only when the target date is unambiguous f
 - Add a `Links shared:` list only for links that do not have an obvious inline anchor.
 - Do not include upcoming events as a write-up section.
 - Preserve meaningful caveats, uncertainty, and distinctions from the spoken answer.
+
+## Writing Style
+
+- Write a useful reference for readers, not a report of what the speaker said. Lead with the answer, fact, explanation, or recommendation.
+- Avoid repetitive speaker-led framing such as "Pamela discussed," "Pamela highlighted," "she explained," and "she recommended." Do not merely replace these with passive phrases like "it was discussed."
+- State supported facts directly. Present advice directly when its meaning does not depend on who gave it.
+- Keep attribution where it matters: personal experience, opinions, participant anecdotes, disagreements, or unconfirmed expectations. Do not turn tentative claims into established facts.
+- Prefer present tense for current capabilities and general guidance. Use past tense for events and observations from the session.
+
+Examples:
+
+- Instead of "Pamela discussed the arrival of Model X in Foundry," write "Model X is now available in Foundry."
+- Instead of "Pamela recommended starting with expected outputs," write "Start with expected outputs."
+- Keep "Pamela had not tested this herself" or "Justin reported a tenfold speedup" because the attribution limits the claim.
 
 ## Format
 
