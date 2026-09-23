@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Python + AI Weekly News: {{DATE_RANGE}}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600&display=block" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #eef1f8;
+      background-image: radial-gradient(rgba(30, 40, 90, .08) 1px, transparent 1px);
+      background-size: 18px 18px;
+      font-family: "Avenir Next", "Segoe UI", -apple-system, sans-serif;
+    }
+    .page { max-width: 1800px; margin: auto; padding: 24px; }
+    header { padding: 4px 4px 8px; margin-bottom: 22px; }
+    h1 {
+      margin: 0;
+      font-family: Sora, "Avenir Next", sans-serif;
+      font-weight: 600;
+      font-size: 4rem;
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      color: #16193a;
+    }
+    /* Renders the emoji as a solid black silhouette. */
+    .snake { background: #111; -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+    .column {
+      min-width: 0;
+      overflow: hidden;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 12px 30px rgba(22, 25, 58, .10);
+    }
+    .red { --column: #dc2626; }
+    .purple { --column: #6f2da8; }
+    .pink { --column: #b11f4b; }
+    .green { --column: #16a34a; }
+    .amber { --column: #b45309; }
+    .blue { --column: #0078d4; }
+    .teal { --column: #0f766e; }
+    .indigo { --column: #4338ca; }
+    .column-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin: 0;
+      padding: 16px;
+      background: var(--column);
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.9rem;
+    }
+    .count { background: rgba(255, 255, 255, .22); padding: 3px 10px; border-radius: 999px; font-weight: 500; font-size: 1rem; }
+    .column-body { display: grid; gap: 10px; padding: 14px; }
+    .item { padding: 12px 14px; border: 1px solid #e6e8f0; border-radius: 12px; background: #fff; }
+    .item-title { margin: 0; font-weight: 500; font-size: 1.15rem; line-height: 1.35; color: #1d2040; }
+    .item-title::before {
+      content: "";
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      margin-right: 10px;
+      border-radius: 50%;
+      background: var(--column);
+      vertical-align: 2px;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <h1><span class="snake">🐍</span> Python + AI Weekly News: {{DATE_RANGE}}</h1>
+    </header>
+    <section class="grid" aria-label="Weekly news">
+      <!-- Repeat one article per topic group. Pick a color class: red, purple, pink, green, amber, blue, teal, indigo. -->
+      <article class="column red" aria-labelledby="group-1-title">
+        <h2 class="column-header" id="group-1-title">{{EMOJI}} {{GROUP_NAME}} <span class="count">{{N}} items</span></h2>
+        <div class="column-body">
+          <div class="item"><p class="item-title">{{HEADLINE}}</p></div>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

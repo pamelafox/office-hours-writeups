@@ -20,4 +20,5 @@ Each week has a directory under `office-hours/YYYY_MM_DD/` containing the record
 * Use the `generate-writeup` skill to create a structured Q&A write-up from the office hours recording.
 * Use the `generate-youtube-description` skill to create a YouTube description and timestamp chapters from the Q&A write-up.
 * Use the `generate-linkedin-post` skill to create a LinkedIn recap from the Q&A write-up.
+* Use the `generate-linkedin-news` skill to create a LinkedIn post of the week's news links, grouped by topic, plus a matching headline image.
 * Use the `post-comments` skill to publish each Q&A to the GitHub Discussion and create `comments.md`.

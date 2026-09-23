@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Python + AI Office Hours — September 22, 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600&display=block" rel="stylesheet">
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #b45309;
+      --cp-link: #0078d4;
+      --cp-ms: #6f2da8;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+      --cp-card-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.14);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-ms: #c79bea;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+      --cp-card-shadow: 0 0 2px rgba(0, 0, 0, 0.32), 0 1px 2px rgba(0, 0, 0, 0.36);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .page { max-width: 1800px; margin: auto; padding: 24px; }
+    header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 20px;
+      padding: 0 4px 16px;
+      border-bottom: 1px solid var(--cp-border);
+    }
+    h1 { margin: 0; font-size: clamp(1.75rem, 3vw, 2.75rem); letter-spacing: -0.035em; }
+    .subtitle { margin: 6px 0 0; color: var(--cp-text-muted); font-size: 1.05rem; }
+    .range { color: var(--cp-text-muted); font-size: 0.9rem; white-space: nowrap; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+    .column {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+      background: var(--cp-bg-elevated);
+      box-shadow: var(--cp-card-shadow);
+    }
+    .frontier { --cp-column: var(--cp-danger); }
+    .foundry { --cp-column: var(--cp-ms); }
+    .copilot { --cp-column: var(--cp-accent); }
+    .python { --cp-column: var(--cp-success); }
+    .safety { --cp-column: var(--cp-warning); }
+    .practices { --cp-column: var(--cp-link); }
+    .column-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin: 0;
+      padding: 16px;
+      border-bottom: 4px solid var(--cp-column);
+      background: var(--cp-surface);
+      color: var(--cp-column);
+      font-size: 1.2rem;
+    }
+    .count { font-size: 0.85rem; font-weight: 500; }
+    .column-body { display: grid; gap: 10px; padding: 12px; }
+    .item {
+      padding: 12px 14px;
+      border: 1px solid var(--cp-border);
+      border-left: 4px solid var(--cp-column);
+      border-radius: 16px;
+      background: var(--cp-surface);
+      box-shadow: var(--cp-card-shadow);
+      transition: transform 160ms ease, border-color 160ms ease;
+    }
+    .item:hover { transform: translateY(-2px); border-color: var(--cp-column); }
+    .item-title { margin: 0; font-size: 1.05rem; font-weight: 650; line-height: 1.35; }
+    a { color: var(--cp-link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    a:focus-visible { outline: 2px solid var(--cp-accent); outline-offset: 3px; }
+    .item a { font-size: 0.875rem; line-height: 1.4; }
+    footer { margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--cp-border); color: var(--cp-text-muted); text-align: center; font-size: 0.82rem; }
+    @media (max-width: 1100px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 700px) {
+      .grid { grid-template-columns: 1fr; }
+      header { flex-direction: column; align-items: start; gap: 12px; }
+    }
+    @media (max-width: 480px) {
+      .page { padding: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .item { transition: none; }
+      .item:hover { transform: none; }
+    }
+    /* LinkedIn theme: Futura heading with solid colored column headers */
+    body { background: #eef1f8; background-image: radial-gradient(rgba(30,40,90,.08) 1px, transparent 1px); background-size: 18px 18px; }
+    header { border-bottom: none; padding: 4px 4px 8px; margin-bottom: 22px; }
+    h1 { font-family: Sora, "Avenir Next", sans-serif; font-weight: 600; font-size: 4rem; line-height: 1.1; letter-spacing: -0.015em; color: #16193a; }
+    .snake { background: #111; -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .column { background: #fff; border: none; border-radius: 18px; box-shadow: 0 12px 30px rgba(22,25,58,.10); }
+    .column-header { background: var(--cp-column); color: #fff; border-bottom: none; font-family: "Avenir Next", sans-serif; font-weight: 600; font-size: 1.9rem; }
+    .count { background: rgba(255,255,255,.22); padding: 3px 10px; border-radius: 999px; font-weight: 500; font-size: 1rem; }
+    .column-body { gap: 10px; padding: 14px; }
+    .item { border: 1px solid #e6e8f0; border-radius: 12px; box-shadow: none; }
+    .item-title { font-family: "Avenir Next", sans-serif; font-weight: 500; font-size: 1.15rem; color: #1d2040; }
+    .item-title::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--cp-column); margin-right: 10px; vertical-align: 2px; }
+    footer { border-top: none; color: #4b5173; font-family: "Avenir Next", sans-serif; font-size: 1.1rem; }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <h1><span class="snake">🐍</span> Python + AI Weekly News: Sept 15–22</h1>
+    </header>
+    <section class="grid" aria-label="Weekly news">
+      <article class="column frontier" aria-labelledby="frontier-title">
+        <h2 class="column-header" id="frontier-title">🔬 Frontier labs <span class="count">3 items</span></h2>
+        <div class="column-body">
+          <div class="item" data-date="2026-09-22">
+            <p class="item-title">Anthropic introduces Claude Opus 5.5</p>
+          </div>
+          <div class="item" data-date="2026-09-22">
+            <p class="item-title">OpenAI launches GPT-6 Sol and Luna</p>
+          </div>
+          <div class="item" data-date="2026-09-21">
+            <p class="item-title">Jev introduces typed “decision model” outputs</p>
+          </div>
+        </div>
+      </article>
+      <article class="column foundry" aria-labelledby="foundry-title">
+        <h2 class="column-header" id="foundry-title">☁️ Microsoft Foundry <span class="count">3 items</span></h2>
+        <div class="column-body">
+          <div class="item" data-date="2026-09-22">
+            <p class="item-title">Claude Opus 5.5 lands in Microsoft Foundry</p>
+          </div>
+          <div class="item" data-date="2026-09-18">
+            <p class="item-title">Foundry agents gain routines and egress controls</p>
+          </div>
+          <div class="item" data-date="2026-09-16">
+            <p class="item-title">Foundry IQ agent skills are released</p>
+          </div>
+        </div>
+      </article>
+      <article class="column copilot" aria-labelledby="copilot-title">
+        <h2 class="column-header" id="copilot-title">🤖 GitHub Copilot <span class="count">3 items</span></h2>
+        <div class="column-body">
+          <div class="item" data-date="2026-09-22">
+            <p class="item-title">Claude Opus 5.5 is now in GitHub Copilot</p>
+          </div>
+          <div class="item" data-date="2026-09-18">
+            <p class="item-title">Copilot code review tracks fixes more clearly</p>
+          </div>
+          <div class="item">
+            <p class="item-title">Copilot runtime ported to Rust, using Copilot</p>
+          </div>
+        </div>
+      </article>
+      <article class="column python" aria-labelledby="python-title">
+        <h2 class="column-header" id="python-title">🐍 Python packages <span class="count">2 items</span></h2>
+        <div class="column-body">
+          <div class="item" data-date="2026-09-21">
+            <p class="item-title">Agent Framework previews a Jev connector</p>
+          </div>
+          <div class="item" data-date="2026-09-18">
+            <p class="item-title">Agent Framework 1.19 adds three vector stores</p>
+          </div>
+        </div>
+      </article>
+      <article class="column safety" aria-labelledby="safety-title">
+        <h2 class="column-header" id="safety-title">🛡️ AI safety <span class="count">2 items</span></h2>
+        <div class="column-body">
+          <div class="item" data-date="2026-09-14">
+            <p class="item-title">Microsoft AI's Humanist Code of Conduct</p>
+          </div>
+          <div class="item" data-date="2026-09-18">
+            <p class="item-title">Gemini crossed test-environment boundaries</p>
+          </div>
+        </div>
+      </article>
+      <article class="column practices" aria-labelledby="practices-title">
+        <h2 class="column-header" id="practices-title">🧪 AI engineering practices <span class="count">2 items</span></h2>
+        <div class="column-body">
+          <div class="item" data-date="2026-09-22">
+            <p class="item-title">Advanced evals start with error discovery</p>
+          </div>
+          <div class="item" data-date="2026-09-21">
+            <p class="item-title">Matt Pocock shares his AI agent skills workflow</p>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
