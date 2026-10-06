@@ -67,14 +67,14 @@ Run all independent data-source groups in parallel:
 
 #### Distinguishing Pamela's tweets from her home timeline
 
-The `getUsersTimeline` API returns the **home timeline** (tweets from everyone
+The `get_users_timeline` tool returns the **home timeline** (tweets from everyone
 Pamela follows), NOT just her own tweets. **Do NOT assume every tweet returned
 is written by Pamela.** To get only Pamela's own tweets, you MUST either:
 
 1. **Preferred:** Use a Twitter search query scoped to her account:
-   `from:pamelafox` with `start_time` / `end_time` filtering. This guarantees
-   only her authored tweets are returned.
-2. **Alternative:** If using `getUsersTimeline`, request `author_id` in
+   call `search_posts_all` with `from:pamelafox` and `start_time` / `end_time`
+   filtering. This guarantees only her authored tweets are returned.
+2. **Alternative:** If using `get_users_timeline`, request `author_id` in
    `tweet.fields` and filter results to keep only tweets where
    `author_id == "10483202"`. Discard all others — they are from accounts
    she follows.
@@ -87,11 +87,11 @@ or Industry columns — never for the "My Work" column.
 
 #### Pagination — home timeline fills up fast
 
-The `getUsersTimeline` API returns the home timeline (hundreds of tweets/day
+The `get_users_timeline` tool returns the home timeline (hundreds of tweets/day
 from all followed accounts), so a single `max_results: 100` call with a 7-day
 window will typically only cover the most recent day or two.
 
-**If using `getUsersTimeline`, you MUST paginate** using the `next_token`
+**If using `get_users_timeline`, you MUST paginate** using the `next_token`
 returned in each response, or make day-by-day calls with narrowing
 `end_time` values, until you've covered the full 7-day window.
 
@@ -101,15 +101,21 @@ returns only Pamela's own tweets and is far less likely to need pagination.
 #### Fetching steps
 
 - Fetch Pamela's own recent tweets (username: **pamelafox**, user ID: **10483202**)
-  for the past 7 days. Use `from:pamelafox` search with `start_time` filtering,
-  or `getUsersTimeline` with `author_id` filtering (see above).
+  for the past 7 days. Use `search_posts_all` with a `from:pamelafox` query and
+  `start_time` filtering, or `get_users_timeline` with `author_id` filtering
+  (see above).
   **Paginate day-by-day or via next_token to cover all 7 days.**
-- Fetch her liked tweets (up to 100) for links, articles, and notable takes.
-  **Important:** The liked-tweets API does NOT support `start_time` filtering —
-  it returns recent likes regardless of when the tweet was posted. After fetching,
-  you MUST check each liked tweet's `created_at` and discard any posted before
-  the 7-day window. Use `getPostsByIds` with `tweet.fields: ["created_at"]` to
-  verify dates in bulk.
+- Fetch Pamela's bookmarks with `get_users_bookmarks` (paginate when a
+  `next_token` is returned). For each bookmarked post, verify `created_at` and
+  discard posts published before the 7-day window. Use `get_posts_by_ids` with
+  `tweet.fields: ["created_at"]` when dates are missing or need bulk verification.
+- **Liked posts cannot currently be retrieved through the connected X MCP.**
+  The underlying X API has a user liked-posts endpoint, but the MCP tool set does
+  not expose it. `get_posts_liking_users` is the inverse operation: it returns
+  users who liked a specified post, not posts liked by Pamela. Do not use it as
+  a substitute. If Pamela supplies liked-post URLs or IDs manually, resolve them
+  with `get_posts_by_id` or `get_posts_by_ids`, then apply the same 7-day
+  `created_at` filter.
 - For any tweets found via search, also apply `start_time` to the search query
   and verify `created_at` on returned results.
 - Extract links, article titles, author names, and key topics.
@@ -266,7 +272,7 @@ opening the canvas.
 
 - The WorkIQ API can be flaky — if the first query fails, retry with a slightly
   different phrasing.
-- Twitter liked tweets can produce large output — save to a temp file and parse.
+- Twitter bookmarks can produce large output — paginate and parse them carefully.
 - If GitHub events API fails, fall back to searching issues/PRs.
 - **Gmail emails**: always fetch the full thread body — snippets alone will miss
   most of the content. If `gmail-get_thread` returns an error, try fetching the
@@ -292,7 +298,8 @@ After generating the webpage, output two markdown tables in your response:
 | Gmail — Pragmatic Engineer | ⚠️ No results | No matching emails this week |
 | WorkIQ | ✅ Success | 12 items extracted |
 | Twitter — own tweets | ✅ Success | `from:pamelafox`, 8 tweets |
-| Twitter — liked tweets | ✅ Success | 47 likes, 6 in date range |
+| Twitter — bookmarks | ✅ Success | 35 bookmarks, 1 in date range |
+| Twitter — liked tweets | ⚠️ Unavailable | X MCP does not expose user liked posts |
 | GitHub events | ✅ Success | 3 repos with activity |
 | GitHub Changelog RSS | ✅ Success | 10 posts, 4 relevant |
 | GitHub Blog RSS | ✅ Success | 5 posts, 2 relevant |
