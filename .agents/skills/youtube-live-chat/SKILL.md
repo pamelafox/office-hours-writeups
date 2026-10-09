@@ -7,6 +7,10 @@ description: Download live chat transcripts from YouTube videos. Use when the us
 
 Download live chat messages from YouTube videos using yt-dlp.
 
+## Requirements
+
+- Python 3.11 or later and `uv`
+
 ## Usage
 
 Run the script with a YouTube URL or video ID:

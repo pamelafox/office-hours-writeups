@@ -1,6 +1,6 @@
 #!/usr/bin/env -S uv run --script
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11"
 # dependencies = ["pillow>=11.0.0"]
 # ///
 """Compose four labeled images into an edge-to-edge social media montage."""

@@ -30,6 +30,7 @@ uv run .github/skills/discussion-commenter/post_qas.py \
 
 ## Requirements
 
+- Python 3.11 or later and `uv`
 - GitHub CLI (`gh`) must be installed and authenticated
 - User must have permission to comment on the discussion
 

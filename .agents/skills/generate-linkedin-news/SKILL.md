@@ -11,6 +11,10 @@ After office hours, create two artifacts in `office-hours/YYYY_MM_DD/`:
 1. `linkedin_news_post.md`: the news links discussed that week, grouped by topic.
 2. `office-hours-news-linkedin.png`: a headline-only image of the same groups, built from `office-hours-news-linkedin.html`.
 
+## Prerequisites
+
+- Python 3.11 or later and `uv` for the screenshot script
+
 ## Inputs
 
 - `office-hours-news.html` (or the slide content in `raw.md`): the roundup prepared before the session.

@@ -7,6 +7,10 @@ description: Extract transcripts from YouTube videos. Use when the user asks for
 
 Extract transcripts from YouTube videos using the youtube-transcript-api.
 
+## Requirements
+
+- Python 3.11 or later and `uv`
+
 ## Usage
 
 Run the script with a YouTube URL or video ID:

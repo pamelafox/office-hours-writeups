@@ -4,6 +4,13 @@ This repo supports two parts of the weekly Python + AI Office Hours workflow usi
 
 [📺 See a video recording of this repo in action](https://youtube.com/live/l_sdnLWNwUc)
 
+## Prerequisites
+
+The Python skill scripts require **Python 3.11 or later** and [`uv`](https://docs.astral.sh/uv/).
+Run them with `uv run` as shown in the skill instructions; `uv` selects a compatible
+Python interpreter and installs the dependencies declared in each script.
+Python 3.10 is no longer supported.
+
 ## User workflow
 
 ### Before office hours

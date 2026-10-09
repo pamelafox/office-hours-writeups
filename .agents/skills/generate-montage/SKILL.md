@@ -19,7 +19,7 @@ If the user does not specify topics, infer the strongest visually distinct topic
 
 ## Prerequisites
 
-- Python and `uv`
+- Python 3.11 or later and `uv`
 - `yt-dlp` and `ffmpeg` when extracting YouTube frames
 
 Check prerequisites with `command -v`. Before installing missing system packages, tell the user what will be installed and obtain confirmation if the package manager requests it.
