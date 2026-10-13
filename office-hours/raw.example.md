@@ -2,8 +2,8 @@
 
 ## Recording
 
-## Slide content:
-
-## Links from open tabs:
+## Links from open tabs
 
 ## Discord chat paste
+
+## Weekly news round-up
