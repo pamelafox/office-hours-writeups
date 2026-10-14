@@ -13,7 +13,7 @@ After office hours, create two artifacts in `office-hours/YYYY_MM_DD/`:
 
 ## Inputs
 
-- `office-hours-news.html` (or the slide content in `raw.md`): the roundup prepared before the session.
+- `index.html` (or the slide content in `raw.md`): the roundup prepared before the session.
 - The Discord chat in `raw.md` or `live_chat.md`: news links shared during the session, such as same-day launches.
 - The YouTube recording URL from `raw.md`.
 

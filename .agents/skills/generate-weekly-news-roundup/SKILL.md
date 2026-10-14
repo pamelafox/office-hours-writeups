@@ -203,7 +203,7 @@ Sort every newsworthy item into exactly one of three buckets:
 
 **Guidelines:**
 - Before selecting items, inspect at least the previous week's
-  `office-hours/*/office-hours-news.html`. Exclude stories already covered there
+  `office-hours/*/index.html`. Exclude stories already covered there
   unless the current week contains a material new announcement. Compare both
   the topic and canonical URL because headlines may differ between sources.
 - Aim for 5–8 items per column (max ~11 in Industry if it's a busy week).
@@ -217,8 +217,19 @@ Sort every newsworthy item into exactly one of three buckets:
 ## Step 3 — Generate the HTML webpage
 
 Generate a full-screen, self-contained HTML webpage at
-`office-hours/YYYY_MM_DD/office-hours-news.html` (for example,
-`office-hours/2026_06_23/office-hours-news.html`).
+`office-hours/YYYY_MM_DD/index.html` (for example,
+`office-hours/2026_06_23/index.html`).
+
+Then add a link to the new week at the top of the `<ul>` in the root
+`index.html`, matching the existing entries (newest first):
+
+```html
+<li><a href="office-hours/YYYY_MM_DD/">Month D, YYYY</a></li>
+```
+
+The repo is published with GitHub Pages, so the roundup will be live at
+`https://pamelafox.github.io/office-hours-writeups/office-hours/YYYY_MM_DD/`
+once pushed to `main`.
 
 ### HTML structure
 
@@ -259,7 +270,7 @@ Then open the browser canvas:
 open_canvas(
   title="Office Hours News",
   type="browser",
-  url="http://localhost:8765/office-hours-writeups/office-hours/YYYY_MM_DD/office-hours-news.html"
+  url="http://localhost:8765/office-hours-writeups/office-hours/YYYY_MM_DD/"
 )
 ```
 

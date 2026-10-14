@@ -25,7 +25,7 @@ Each completed week should have a structure like this:
 ```text
 office-hours/
   YYYY_MM_DD/
-    office-hours-news.html       # Pre-event browser roundup
+    index.html                   # Pre-event browser roundup
     raw.md                       # Recording URL and supplemental resources
     transcript.md                # Timestamped recording transcript
     live_chat.md                 # YouTube live chat, when available
@@ -37,5 +37,6 @@ office-hours/
 
 ## Resources
 
+- [Weekly news roundups](https://pamelafox.github.io/office-hours-writeups/)
 - [Weekly office hours recordings & Q&A](https://aka.ms/pythonai/oh/links)
 - [Weekly live office hours](https://aka.ms/pythonai/oh)

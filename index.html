@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Python + AI Office Hours — Weekly News Roundups</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-surface: #ffffff;
+      --cp-border: #dedede;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-accent: #b11f4b;
+      --cp-link: #0078d4;
+      --cp-card-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.14);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-surface: #292929;
+      --cp-border: #474747;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-accent: #fd8ea1;
+      --cp-link: #4da6ff;
+      --cp-card-shadow: 0 0 2px rgba(0, 0, 0, 0.32), 0 1px 2px rgba(0, 0, 0, 0.36);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .page { max-width: 720px; margin: auto; padding: 32px 24px; }
+    h1 { margin: 0; font-size: clamp(1.75rem, 3vw, 2.5rem); letter-spacing: -0.035em; }
+    .subtitle { margin: 6px 0 24px; color: var(--cp-text-muted); font-size: 1.05rem; }
+    ul { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+    li a {
+      display: block;
+      padding: 14px 16px;
+      border: 1px solid var(--cp-border);
+      border-left: 4px solid var(--cp-accent);
+      border-radius: 16px;
+      background: var(--cp-surface);
+      box-shadow: var(--cp-card-shadow);
+      color: var(--cp-link);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    li a:hover { text-decoration: underline; }
+    li a:focus-visible { outline: 2px solid var(--cp-accent); outline-offset: 3px; }
+    footer { margin-top: 24px; color: var(--cp-text-muted); font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <h1>🐍 Python + AI Office Hours</h1>
+    <p class="subtitle">Weekly News Roundups</p>
+    <ul>
+      <li><a href="office-hours/2026_10_13/">October 13, 2026</a></li>
+      <li><a href="office-hours/2026_10_06/">October 6, 2026</a></li>
+      <li><a href="office-hours/2026_09_22/">September 22, 2026</a></li>
+      <li><a href="office-hours/2026_09_15/">September 15, 2026</a></li>
+      <li><a href="office-hours/2026_09_08/">September 8, 2026</a></li>
+      <li><a href="office-hours/2026_09_01/">September 1, 2026</a></li>
+      <li><a href="office-hours/2026_08_25/">August 25, 2026</a></li>
+      <li><a href="office-hours/2026_08_18/">August 18, 2026</a></li>
+      <li><a href="office-hours/2026_08_11/">August 11, 2026</a></li>
+      <li><a href="office-hours/2026_07_21/">July 21, 2026</a></li>
+      <li><a href="office-hours/2026_07_14/">July 14, 2026</a></li>
+      <li><a href="office-hours/2026_07_07/">July 7, 2026</a></li>
+      <li><a href="office-hours/2026_06_23/">June 23, 2026</a></li>
+      <li><a href="office-hours/2026_06_17/">June 17, 2026</a></li>
+    </ul>
+    <footer>Join live every week: <a href="https://aka.ms/pythonai/oh">aka.ms/pythonai/oh</a></footer>
+  </main>
+</body>
+</html>
