@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Python + AI Weekly News: Oct 6–13</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600&display=block" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #eef1f8;
+      background-image: radial-gradient(rgba(30, 40, 90, .08) 1px, transparent 1px);
+      background-size: 18px 18px;
+      font-family: "Avenir Next", "Segoe UI", -apple-system, sans-serif;
+    }
+    .page { max-width: 1800px; margin: auto; padding: 24px; }
+    header { padding: 4px 4px 8px; margin-bottom: 22px; }
+    h1 {
+      margin: 0;
+      font-family: Sora, "Avenir Next", sans-serif;
+      font-weight: 600;
+      font-size: 4rem;
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      color: #16193a;
+    }
+    /* Renders the emoji as a solid black silhouette. */
+    .snake { background: #111; -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+    .column {
+      min-width: 0;
+      overflow: hidden;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 12px 30px rgba(22, 25, 58, .10);
+    }
+    .purple { --column: #6f2da8; }
+    .green { --column: #16a34a; }
+    .blue { --column: #0078d4; }
+    .column-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin: 0;
+      padding: 16px;
+      background: var(--column);
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.9rem;
+    }
+    .count { background: rgba(255, 255, 255, .22); padding: 3px 10px; border-radius: 999px; font-weight: 500; font-size: 1rem; }
+    .column-body { display: grid; gap: 10px; padding: 14px; }
+    .item { padding: 12px 14px; border: 1px solid #e6e8f0; border-radius: 12px; background: #fff; }
+    .item-title { margin: 0; font-weight: 500; font-size: 1.15rem; line-height: 1.35; color: #1d2040; }
+    .item-title::before {
+      content: "";
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      margin-right: 10px;
+      border-radius: 50%;
+      background: var(--column);
+      vertical-align: 2px;
+    }
+    .events-title { margin: 8px 2px 0; padding-top: 14px; border-top: 2px solid #e6e8f0; color: var(--column); font-size: 1.4rem; font-weight: 600; }
+    .events { display: grid; gap: 8px; margin: 0; padding: 0 2px; list-style: none; }
+    .events b { display: inline-block; min-width: 6.2em; color: var(--column); font-weight: 600; }
+    .events li { font-weight: 500; font-size: 1.15rem; line-height: 1.35; color: #1d2040; white-space: nowrap; }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <h1><span class="snake">🐍</span> Python + AI Weekly News: Oct 6–13</h1>
+    </header>
+    <section class="grid" aria-label="Weekly news">
+      <article class="column purple" aria-labelledby="group-1-title">
+        <h2 class="column-header" id="group-1-title">🏢 Microsoft / GitHub <span class="count">7 items</span></h2>
+        <div class="column-body">
+          <div class="item"><p class="item-title">Microsoft-Decision-1 speeds agent decisions</p></div>
+          <div class="item"><p class="item-title">Windows embraces hybrid local + cloud AI</p></div>
+          <div class="item"><p class="item-title">HydraFusion reaches VS Code and Copilot app</p></div>
+          <div class="item"><p class="item-title">Copilot CLI discovers local Ollama models</p></div>
+          <div class="item"><p class="item-title">VS Code 1.141 adds Copilot harness + sandbox</p></div>
+          <div class="item"><p class="item-title">Execution Containers secure agent workloads</p></div>
+          <div class="item"><p class="item-title">Microsoft's AX Practitioner Playbook</p></div>
+        </div>
+      </article>
+      <article class="column green" aria-labelledby="group-2-title">
+        <h2 class="column-header" id="group-2-title">🌐 Industry <span class="count">7 items</span></h2>
+        <div class="column-body">
+          <div class="item"><p class="item-title">Meta launches Muse Wonder frontier models</p></div>
+          <div class="item"><p class="item-title">OpenAI Decisions API enters public beta</p></div>
+          <div class="item"><p class="item-title">Python 3.15 ships lazy imports and Tachyon</p></div>
+          <div class="item"><p class="item-title">Anthropic updates Claude's usage policy</p></div>
+          <div class="item"><p class="item-title">Google requires agent OAuth labels for MCP</p></div>
+          <div class="item"><p class="item-title">Personal Agent Protocol connects businesses</p></div>
+          <div class="item"><p class="item-title">Vibe-coded ArtCraft recreates Adobe's suite</p></div>
+        </div>
+      </article>
+      <article class="column blue" aria-labelledby="group-3-title">
+        <h2 class="column-header" id="group-3-title">👩‍💻 What I've Been Up To <span class="count">4 items</span></h2>
+        <div class="column-body">
+          <div class="item"><p class="item-title">Spoke to CS teachers about AI coding</p></div>
+          <div class="item"><p class="item-title">Led a Foundry + Anthropic workshop in SF</p></div>
+          <div class="item"><p class="item-title">Dropped Python 3.10 from sample templates</p></div>
+          <div class="item"><p class="item-title">Released Content Understanding GA support</p></div>
+          <h3 class="events-title">📅 Upcoming events</h3>
+          <ul class="events">
+            <li><b>Oct 22–23</b> AGNTCon + MCPCon, San Jose</li>
+            <li><b>Oct 28–29</b> GitHub Universe, San Francisco</li>
+            <li><b>Nov 17–20</b> Microsoft Ignite, San Francisco</li>
+            <li><b>Dec 5–7</b> PyLadies Con, Online</li>
+            <li><b>Dec 9</b> Microsoft AI Tour, Seattle</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
