@@ -12,13 +12,20 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 # Counts rendered lines per element; column headers measure only their text, not the count badge.
+# Event rows use height instead, since their inline-block date label skews the line tops.
 WRAPPED_JS = """
-() => [...document.querySelectorAll('h1, .column-header, .item-title')].flatMap(el => {
-  const range = document.createRange();
-  range.selectNodeContents(el.classList.contains('column-header') ? el.firstChild : el);
-  const lines = new Set([...range.getClientRects()].filter(r => r.width > 0).map(r => Math.round(r.top)));
-  return lines.size > 1 ? [el.textContent.trim()] : [];
-})
+() => {
+  const rangeWraps = el => {
+    const range = document.createRange();
+    range.selectNodeContents(el.classList.contains('column-header') ? el.firstChild : el);
+    return new Set([...range.getClientRects()].filter(r => r.width > 0).map(r => Math.round(r.top))).size > 1;
+  };
+  const heightWraps = el => el.getBoundingClientRect().height > 1.5 * parseFloat(getComputedStyle(el).lineHeight);
+  return [
+    ...[...document.querySelectorAll('h1, .column-header, .item-title')].filter(rangeWraps),
+    ...[...document.querySelectorAll('.events li')].filter(heightWraps),
+  ].map(el => el.textContent.trim());
+}
 """
 
 

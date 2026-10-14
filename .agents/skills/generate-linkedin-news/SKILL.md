@@ -1,6 +1,6 @@
 ---
 name: generate-linkedin-news
-description: "Generate a LinkedIn news post and matching headline image for the news discussed at a weekly Python + AI Office Hours session. Use when asked for a LinkedIn news roundup, linkedin_news_post.md, a news screenshot for LinkedIn, or office-hours-news-linkedin.png."
+description: "Generate a LinkedIn news post and matching headline image for the news discussed at a weekly Python + AI Office Hours session. Use when asked for a LinkedIn news roundup, linkedin_news_post.md, a news screenshot for LinkedIn, a screenshot-friendly version of the weekly roundup page, or office-hours-news-linkedin.png."
 argument-hint: "Office-hours date (YYYY-MM-DD), or use the current session context"
 ---
 
@@ -11,13 +11,18 @@ After office hours, create two artifacts in `office-hours/YYYY_MM_DD/`:
 1. `linkedin_news_post.md`: the news links discussed that week, grouped by topic.
 2. `office-hours-news-linkedin.png`: a headline-only image of the same groups, built from `office-hours-news-linkedin.html`.
 
+There are two layouts. Ask which one Pamela wants if it's unclear:
+
+- **Topic groups** (default): a post listing the news links, grouped by topic. Follow the Procedure below.
+- **Roundup columns**: a post announcing the week's roundup webpage on GitHub Pages, with an image that mirrors that page's three columns. Follow [Roundup columns layout](#roundup-columns-layout).
+
 ## Inputs
 
 - `index.html` (or the slide content in `raw.md`): the roundup prepared before the session.
 - The Discord chat in `raw.md` or `live_chat.md`: news links shared during the session, such as same-day launches.
 - The YouTube recording URL from `raw.md`.
 
-Leave out the "What I've Been Up To" items and upcoming events. They are Pamela's own work, not news.
+In the topic groups layout, leave out the "What I've Been Up To" items and upcoming events. They are Pamela's own work, not news.
 
 ## Procedure
 
@@ -83,6 +88,48 @@ https://aka.ms/pythonai/oh/links
 ```
 
 End with the recording link and `https://aka.ms/pythonai/oh/links`. Do not use `http://aka.ms/pythonai/oh`.
+
+## Roundup columns layout
+
+Use this layout to point readers at the published roundup page instead of listing links. It can be posted the same day, before the recording is up.
+
+### Post
+
+Write `linkedin_news_post.md` in this format:
+
+```text
+🗞️ This week's AI news roundup from my Python + AI office hours is now a webpage you can browse anytime!
+
+<One or two sentences on what the roundup is.>
+https://pamelafox.github.io/office-hours-writeups/office-hours/YYYY_MM_DD/
+
+A few highlights from this week:
+
+<emoji> <highlight>
+<emoji> <highlight>
+<emoji> <highlight>
+<emoji> <highlight>
+
+Want past weeks too? Browse every roundup here:
+https://pamelafox.github.io/office-hours-writeups/
+
+Join us live every Tuesday at 11 AM PT: http://aka.ms/pythonai/oh
+```
+
+- Pick 4 highlights from the Microsoft / GitHub and Industry columns, mixing both. Each highlight can add a detail from the item's link text.
+- Skip anything Pamela already posted about separately that week.
+
+### Image
+
+Copy [template-columns.html](./template-columns.html) to `office-hours/YYYY_MM_DD/office-hours-news-linkedin.html` and fill it in from that week's `index.html`:
+
+- Replace `{{DATE_RANGE}}` with the roundup range, such as `Oct 6–13`.
+- Keep the three columns in the page's order: 🏢 Microsoft / GitHub, 🌐 Industry, 👩‍💻 What I've Been Up To. Include every item, headlines only, and update each `N items` count.
+- Fit each headline on one line, about 43 characters at most. For example, "VS Code 1.141 adds Copilot harness + sandbox" instead of "VS Code 1.141 adds Copilot harness and local sandboxing".
+- Fill the Upcoming events list from the page's events table, one `<li>` per event, as `<b>Date</b> Event, Location`. Leave out the recurring weekly office hours row.
+- The events list balances the shorter third column. If that column is still much shorter or taller than the others, add or drop events.
+
+Then run the same screenshot command as step 4. It also checks that event rows don't wrap.
 
 ## Style Decisions
 
