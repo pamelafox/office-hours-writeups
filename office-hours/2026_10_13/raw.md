@@ -2,6 +2,8 @@
 
 ## Recording
 
+https://www.youtube.com/watch?v=wrw9xA541Fk
+
 ## Links from open tabs:
 
 https://astral.sh/blog/python-3.15
