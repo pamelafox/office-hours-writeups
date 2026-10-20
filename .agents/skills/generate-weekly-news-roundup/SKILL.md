@@ -50,16 +50,33 @@ Run all independent data-source groups in parallel:
 ### 1b. WorkIQ (emails & chats)
 - Search for items mentioning: Python, AI, OpenAI, Azure OpenAI, LLM, GPT,
   Copilot, developer tools, MCP, agent framework, Foundry, Responses API.
+- Also run a date-bounded sweep across all Outlook email for newsletter-style
+  subjects and announcement terms, including: newsletter, update, announcing,
+  launches, release, "what's new", and "news you might have missed". Do not
+  rely only on AI keywords, since relevant newsletters may use product names or
+  generic update subjects.
 - **Source routing:** VS Code Insiders and Linux Foundation newsletters are in
-  Pamela's Outlook account. Query them through WorkIQ, not Gmail.
+  Pamela's Outlook account. Global AI Weekly may arrive in either Outlook or
+  Gmail, so search both accounts before reporting no results.
 - Explicitly query WorkIQ/email context for:
   - `subject:"VS Code Insiders Update"` (Outlook)
+  - `subject:"GitHub Copilot CLI/SDK/app"` (Outlook)
+  - `subject:"GitHub Copilot for 3rd Party IDEs Update"` (Outlook)
+  - `subject:"Weekly GitHub & Developer Tools Update"` (Outlook)
   - `from:"The Linux Foundation"` (Outlook)
   - `"News you might have missed"`
   - `from:pytorchevents@linuxfoundation.org` (Outlook)
+  - `from:marketing@pytorch.org` (Outlook)
+  - `from:hq@globalai.community` (Outlook)
   - `from:noreply@email.openai.com` (OpenAI product updates in Outlook)
   - `from:github-copilot-insiders@microsoft.com` (GitHub Copilot insiders updates in Outlook)
   - `to:developertools-mvp-nda@mstechdiscussions.com` (Developer Tools MVP NDA emails in Outlook)
+- GitHub Copilot newsletters may be sent by individual Microsoft employees
+  rather than the shared insiders address. Prefer the subject-based searches
+  above, and do not discard a matching newsletter because its sender changes.
+- For every promising WorkIQ email result, retrieve the complete message body
+  before extracting announcements. Search snippets are often truncated and may
+  omit most of a newsletter's items and links.
 - Look for announcements, migration notices, new releases, blog posts, and
   notable discussions.
 
