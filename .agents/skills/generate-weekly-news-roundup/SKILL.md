@@ -32,6 +32,7 @@ Run all independent data-source groups in parallel:
   | `from:"Global AI Community" after:YYYY/MM/DD` | Global AI Weekly newsletter |
   | `from:hq@globalai.community after:YYYY/MM/DD` | Global AI Weekly (alternate sender address) |
   | `from:newsletter@humanwhocodes.com after:YYYY/MM/DD` | Human Who Codes AI developer newsletter |
+  | `from:tokensandai@mail.beehiiv.com after:YYYY/MM/DD` | tokens& Weekly AI newsletter |
   | `from:newsletters-noreply@linkedin.com subject:"Main Branch" after:YYYY/MM/DD` | Andrea Griffiths' GitHub and developer-tools newsletter |
   | `(AI OR Python OR OpenAI OR "Azure OpenAI" OR LLM OR GPT OR Copilot OR MCP OR Foundry OR GitHub OR "GitHub Actions" OR "VS Code" OR agent OR agents) after:YYYY/MM/DD` | Catch-all for other relevant newsletters |
 
@@ -44,6 +45,9 @@ Run all independent data-source groups in parallel:
   Then use `web_fetch` on that URL to get the rendered newsletter content with
   all headlines, summaries, and links. You may need to paginate `web_fetch` with
   `start_index` to get the full issue.
+- **tokens& Weekly special handling:** After fetching the full thread, if its
+  newsletter content is missing or incomplete, find the **Read online** link
+  and use `web_fetch` on its URL to read the complete issue.
 - Search for announcements, migration notices, new releases, blog posts, and
   other noteworthy emails relevant to Python/AI work.
 
