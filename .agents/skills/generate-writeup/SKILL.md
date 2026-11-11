@@ -33,6 +33,7 @@ If the date is not explicit, infer it only when the target date is unambiguous f
 - Summarize answers clearly rather than reproducing the transcript verbatim.
 - Add inline links to natural words or phrases in the answer text.
 - Add a `Links shared:` list only for links that do not have an obvious inline anchor.
+- Remove locale segments such as `/en-us/` from Microsoft Learn links (use `https://learn.microsoft.com/azure/...`, not `https://learn.microsoft.com/en-us/azure/...`).
 - Do not include upcoming events as a write-up section.
 - Preserve meaningful caveats, uncertainty, and distinctions from the spoken answer.
 

@@ -1,0 +1,17 @@
+# Comments posted to discussion
+
+* [Announcement: Skills over MCP arrives in the GitHub Copilot harness](#discussioncomment-19549432)
+* [Announcement: Azure OpenAI starter kit adds Decisions API samples](#discussioncomment-19549433)
+* [Announcement: Claude adds message threads](#discussioncomment-19549434)
+* [Announcement: OpenAI launches GPT-6 Cyber](#discussioncomment-19549435)
+* [Announcement: AI coding startups consolidate](#discussioncomment-19549436)
+* [Discussion: Security breaches and technology in healthcare](#discussioncomment-19549437)
+* [Discussion: The impact of AI on the CS curriculum](#discussioncomment-19549438)
+* [Announcement: GitHub and Azure updates](#discussioncomment-19549439)
+* [Demo: GitHub in Slack and Teams](#discussioncomment-19549440)
+* [Announcement: Python 3.10 is end of life](#discussioncomment-19549441)
+* [Announcement: Image and video models across the industry](#discussioncomment-19549443)
+* [Announcement: Latest research into agent reasoning and hallucinations](#discussioncomment-19549445)
+* [If an agent can only access what the asking user can access, how can Microsoft IQ use a company-wide knowledge graph to give good answers?](#discussioncomment-19549446)
+* [Will GraphRAG replace vector databases, or are they used together in a hybrid system?](#discussioncomment-19549448)
+* [Where should we start when building a SharePoint knowledge bot for our organization's data?](#discussioncomment-19549451)
